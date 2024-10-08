@@ -1,0 +1,27 @@
+{
+  "name": "quansitech/antd-admin",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "jack",
+      "email": "958691165@qq.com"
+    }
+  ],
+  "require": {
+    "tiderjian/think-core": ">=14"
+  },
+  "autoload": {
+    "psr-4": {
+      "AntdAdmin\\": "src/"
+    }
+  },
+  "extra": {
+    "qscmf": {
+      "providers": [
+        "AntdAdmin\\AntdAdminProvider"
+      ]
+    }
+  }
+}
