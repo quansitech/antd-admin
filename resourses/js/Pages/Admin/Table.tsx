@@ -7,7 +7,7 @@ export default function () {
 
     const [Component, setComponent] = useState<ReactComponentLike>()
     useEffect(() => {
-        setComponent(lazy(() => import('qs-antd-admin/components/Table')))
+        setComponent(lazy(() => import('@quansitech/antd-admin/components/Table')))
     }, []);
 
     return <>{Component

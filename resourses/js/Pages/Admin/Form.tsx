@@ -7,7 +7,7 @@ export default function () {
 
     const [Component, setComponent] = useState<ReactComponentLike>()
     useEffect(() => {
-        setComponent(lazy(() => import('qs-antd-admin/components/Form')))
+        setComponent(lazy(() => import('@quansitech/antd-admin/components/Form')))
     }, []);
 
     return <>{Component

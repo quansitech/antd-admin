@@ -8,7 +8,7 @@ export default function () {
 
     const [Component, setComponent] = useState<ReactComponentLike>()
     useEffect(() => {
-        setComponent(lazy(() => import('qs-antd-admin/components/Tabs')))
+        setComponent(lazy(() => import('@quansitech/antd-admin/components/Tabs')))
     }, []);
 
     return <>{Component
