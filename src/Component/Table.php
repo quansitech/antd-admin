@@ -9,6 +9,9 @@ use AntdAdmin\Component\Table\Pagination;
 use AntdAdmin\Component\Tabs\PaneInterface;
 use AntdAdmin\Component\Traits\HasContainer;
 
+/**
+ * @method $this setSearch(boolean $search) 设置是否显示搜索框
+ */
 class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 {
     use PageComponent {
@@ -138,12 +141,15 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
     {
         if ($this->isSearchRequest()) {
             header('Content-Type: application/json');
-            qs_exit(json_encode($this->render_data['dataSource']));
+            qs_exit(json_encode([
+                'dataSource' => $this->render_data['dataSource'],
+                'pagination' => $this->render_data['pagination']?->render(),
+            ]));
         }
         return $this->pageRender($showView);
     }
 
-    private function isSearchRequest()
+    protected function isSearchRequest()
     {
         $headers = getallheaders();
         return $headers['X-Table-Search'] ?? false;

@@ -23,15 +23,22 @@ class Tabs extends BaseComponent
         $this->render_data['tabs'] = [];
     }
 
-    public function addTab(string $key, string $title, PaneInterface $pane)
+    public function addTab(string $key, string $title, PaneInterface $pane = null, string $url = '')
     {
-        $this->render_data['tabs'][$key] = [
+        $tab = [
             'title' => $title,
-            'pane' => [
+        ];
+        if ($url) {
+            $tab['url'] = $url;
+        }
+        if ($pane) {
+            $tab['pane'] = [
                 'component' => $pane->getTabPaneComponent(),
                 'props' => $pane
-            ],
-        ];
+            ];
+        }
+
+        $this->render_data['tabs'][$key] = $tab;
         return $this;
     }
 
@@ -40,7 +47,9 @@ class Tabs extends BaseComponent
         foreach ($this->render_data['tabs'] as &$tab) {
             /** @var PaneInterface $pane */
             $pane = $tab['pane']['props'];
-            $tab['pane']['props'] = $pane->getTabPaneProps();
+            if ($pane) {
+                $tab['pane']['props'] = $pane->getTabPaneProps();
+            }
         }
         return $this->parentRender($showView);
     }
