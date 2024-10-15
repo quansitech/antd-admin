@@ -29,24 +29,6 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 
 
     /**
-     * 设置表格滚动
-     * @htmlpath https://ant.design/components/table-cn#scroll
-     * @param ?bool $scrollToFirstRowOnChange 数据变更时是否滚动到第一行
-     * @param ?string $x 宽度
-     * @param ?string $y 高度
-     * @return $this
-     */
-    public function setScroll(bool $scrollToFirstRowOnChange = null, string $x = null, string $y = null): static
-    {
-        $this->render_data['scroll'] = [
-            'scrollToFirstRowOnChange' => $scrollToFirstRowOnChange,
-            'x' => $x,
-            'y' => $y
-        ];
-        return $this;
-    }
-
-    /**
      * 设置搜索地址
      * @param string $url
      * @return Table
@@ -82,7 +64,7 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         return $this;
     }
 
-    protected function getComponentName()
+    protected function getPageComponent()
     {
         return 'Admin/Table';
     }

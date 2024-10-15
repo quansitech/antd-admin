@@ -43,7 +43,7 @@ class Form extends BaseComponent implements PaneInterface, ModalPropsInterface
         return $this;
     }
 
-    protected function getComponentName(): string
+    protected function getPageComponent(): string
     {
         return 'Admin/Form';
     }

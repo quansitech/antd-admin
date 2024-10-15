@@ -17,6 +17,7 @@ class Button extends BaseAction
             'link',
             'reset',
             'request',
+            'back',
         ];
     }
 
@@ -37,6 +38,11 @@ class Button extends BaseAction
         return $this;
     }
 
+    /**
+     * 跳转链接
+     * @param $url
+     * @return $this
+     */
     public function link($url)
     {
         $this->render_data['link'] = [
@@ -45,6 +51,15 @@ class Button extends BaseAction
         return $this;
     }
 
+    /**
+     * 提交表单
+     * @param $method
+     * @param $url
+     * @param $data
+     * @param $confirm
+     * @param $afterAction
+     * @return $this
+     */
     public function submit($method, $url, $data = null, $confirm = '', $afterAction = [self::AFTER_ACTION_CLOSE_MODAL, self::AFTER_ACTION_TABLE_RELOAD])
     {
         $this->render_data['submit'] = [
@@ -57,9 +72,23 @@ class Button extends BaseAction
         return $this;
     }
 
+    /**
+     * 重置表单
+     * @return $this
+     */
     public function reset()
     {
         $this->render_data['reset'] = true;
+        return $this;
+    }
+
+    /**
+     * 返回上一页
+     * @return $this
+     */
+    public function back()
+    {
+        $this->render_data['back'] = true;
         return $this;
     }
 }

@@ -7,7 +7,6 @@ use AntdAdmin\Component\ColumnType\Area;
 use AntdAdmin\Component\ColumnType\BaseColumn;
 use AntdAdmin\Component\ColumnType\Cascader;
 use AntdAdmin\Component\ColumnType\Checkbox;
-use AntdAdmin\Component\ColumnType\City;
 use AntdAdmin\Component\ColumnType\Date;
 use AntdAdmin\Component\ColumnType\DateMonth;
 use AntdAdmin\Component\ColumnType\DateRange;
@@ -55,7 +54,6 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  * @method SwitchType switchType(string $dataIndex, string $title)
  * @method File file(string $dataIndex, string $title)
  * @method Area area(string $dataIndex, string $title)
- * @method Form\ColumnType\RichText richText(string $dataIndex, string $title)
  * @method Form\ColumnType\Ueditor ueditor(string $dataIndex, string $title)
  */
 class ColumnsContainer extends BaseComponent
@@ -67,7 +65,9 @@ class ColumnsContainer extends BaseComponent
     public function addColumn(BaseColumn $column)
     {
         $column->setWidth('md');
-        $column->setFormItemWidth(8);
+        if (method_exists($column, 'afterFormAdd')) {
+            $column->afterFormAdd();
+        }
         $this->render_data[] = $column;
         return $column;
     }

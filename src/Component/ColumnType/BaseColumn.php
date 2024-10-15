@@ -17,6 +17,11 @@ abstract class BaseColumn extends BaseComponent
 {
     abstract protected function getValueType(): string;
 
+    public function afterFormAdd()
+    {
+        $this->setFormItemWidth(8);
+    }
+
     public function __construct($dataIndex, $title)
     {
         $this->render_data = [
@@ -74,6 +79,7 @@ abstract class BaseColumn extends BaseComponent
     }
 
     /**
+     * 添加校验规则
      * @param BaseRule $rule
      * @return $this
      */
@@ -84,6 +90,11 @@ abstract class BaseColumn extends BaseComponent
     }
 
 
+    /**
+     * 设置提示信息，为方便使用提供此方法
+     * @param $tips
+     * @return $this
+     */
     public function setTips($tips)
     {
         $this->render_data['formItemProps']['extra'] = $tips;

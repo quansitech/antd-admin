@@ -13,7 +13,7 @@ class Tabs extends BaseComponent
         render as parentRender;
     }
 
-    protected function getComponentName()
+    protected function getPageComponent()
     {
         return 'Admin/Tabs';
     }

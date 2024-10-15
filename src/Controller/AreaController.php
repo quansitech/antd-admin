@@ -9,12 +9,14 @@ class AreaController extends Controller
 {
     public function forCascader()
     {
+        // 获取选中值
         $value = I('value');
         if ($value) {
             $rows = $this->getParentsToValue($value);
             $this->ajaxReturn($rows);
         }
 
+        // 获取所有子节点
         $maxLevel = I('maxLevel', 3);
         $field = 'id as value,cname as label,level';
         $selected = I('selected');

@@ -2,16 +2,10 @@
 
 namespace AntdAdmin\Controller;
 
-use Qscmf\Core\QsListController;
 use Qscmf\Lib\Inertia\Inertia;
 
-abstract class AdminController extends QsListController
+trait HasLayoutProps
 {
-    protected function _initialize()
-    {
-        parent::_initialize();
-        $this->handleLayoutProps();
-    }
 
     protected function handleLayoutProps()
     {
@@ -94,17 +88,4 @@ abstract class AdminController extends QsListController
 
         return $res;
     }
-
-    protected function success($message = '', $jumpUrl = '', $ajax = false)
-    {
-        header('X-Antd-Admin: 1');
-        parent::success($message, $jumpUrl, $ajax);
-    }
-
-    protected function error($message = '', $jumpUrl = '', $ajax = false)
-    {
-        header('X-Antd-Admin: 1');
-        parent::error($message, $jumpUrl, $ajax);
-    }
-
 }

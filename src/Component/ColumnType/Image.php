@@ -22,4 +22,14 @@ class Image extends File
         ];
         return $this;
     }
+
+    public function render()
+    {
+        if (!isset($this->render_data['fieldProps']['uploadRequest'])) {
+            $this->render_data['fieldProps']['uploadRequest'] = [
+                'policyGetUrl' => U('api/upload/upload', ['cate' => 'image']),
+            ];
+        }
+        return parent::render();
+    }
 }

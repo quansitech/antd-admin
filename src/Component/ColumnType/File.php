@@ -39,6 +39,11 @@ class File extends BaseColumn
         if (!isset($this->render_data['fieldProps']['loadUrl'])) {
             $this->render_data['fieldProps']['loadUrl'] = U('Antd/Upload/fileInfo');
         }
+        if (!isset($this->render_data['fieldProps']['uploadRequest'])) {
+            $this->render_data['fieldProps']['uploadRequest'] = [
+                'policyGetUrl' => U('api/upload/upload', ['cate' => 'file']),
+            ];
+        }
         return parent::render();
     }
 }

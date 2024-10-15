@@ -14,7 +14,7 @@ trait PageComponent
         return $this;
     }
 
-    abstract protected function getComponentName();
+    abstract protected function getPageComponent();
 
 
     public function render($showView = true)
@@ -25,7 +25,7 @@ trait PageComponent
 
         $render_data = parent::render();
         if ($showView) {
-            Inertia::getInstance()->render($this->getComponentName(), $render_data, T('common/inertia_blank_layout'));
+            Inertia::getInstance()->render($this->getPageComponent(), $render_data, T('common/inertia_blank_layout'));
         }
         return $render_data;
     }

@@ -2,11 +2,11 @@
 
 namespace AntdAdmin\Component\ColumnType;
 
-use AntdAdmin\Component\Traits\HasValueEnum;
+use AntdAdmin\Component\Traits\HasOptions;
 
 class Radio extends BaseColumn
 {
-    use HasValueEnum;
+    use HasOptions;
 
     protected function getValueType(): string
     {
