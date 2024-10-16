@@ -2,11 +2,11 @@
 
 namespace AntdAdmin\Component\ColumnType;
 
-use AntdAdmin\Component\Traits\HasOptions;
+use AntdAdmin\Component\Traits\HasValueEnum;
 
 class SwitchType extends BaseColumn
 {
-    use HasOptions;
+    use HasValueEnum;
 
     protected function getValueType(): string
     {

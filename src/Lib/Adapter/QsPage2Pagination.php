@@ -5,14 +5,11 @@ namespace AntdAdmin\Lib\Adapter;
 use AntdAdmin\Component\Table\Pagination;
 use Qscmf\Core\QsPage;
 
-class QsPage2Pagination extends Pagination
+class QsPage2Pagination
 {
-    public function __construct(QsPage $page)
+    public static function render(QsPage $page)
     {
-
-        $this->setCurrent($page->nowPage);
-        $this->setPageSize($page->listRows);
-        $this->setTotal($page->totalRows);
-        $this->setParamName(C('VAR_PAGE'));
+        return new Pagination($page->nowPage, $page->listRows, $page->totalRows, C('VAR_PAGE'));
     }
+
 }

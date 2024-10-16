@@ -3,6 +3,7 @@
 namespace AntdAdmin\Component;
 
 use AntdAdmin\Component\Form\ActionsContainer;
+use AntdAdmin\Component\Form\ActionType\Button;
 use AntdAdmin\Component\Form\ColumnsContainer;
 use AntdAdmin\Component\Modal\ModalPropsInterface;
 use AntdAdmin\Component\Tabs\PaneInterface;
@@ -62,5 +63,17 @@ class Form extends BaseComponent implements PaneInterface, ModalPropsInterface
     public function getModalProps()
     {
         return $this->render(false);
+    }
+
+    public function setSubmitRequest($method, $url, $data = null, $headers = null, $afterAction = [Button::AFTER_ACTION_CLOSE_MODAL, Button::AFTER_ACTION_TABLE_RELOAD])
+    {
+        $this->render_data['submitRequest'] = [
+            'method' => $method,
+            'url' => $url,
+            'data' => $data,
+            'headers' => $headers,
+            'afterAction' => $afterAction,
+        ];
+        return $this;
     }
 }

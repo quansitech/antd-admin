@@ -7,7 +7,6 @@ use AntdAdmin\Component\Modal\ModalContent;
 trait HasModalAction
 {
 
-
     /**
      * @param string $title
      * @param ModalContent $content

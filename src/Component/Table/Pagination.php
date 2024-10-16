@@ -16,6 +16,14 @@ class Pagination extends BaseComponent
         'paramName' => 'page',
     ];
 
+    public function __construct($current, $pageSize, $total, $paramName = 'page')
+    {
+        $this->setCurrent($current);
+        $this->setPageSize($pageSize);
+        $this->setTotal($total);
+        $this->setParamName($paramName);
+    }
+
     public function setCurrent(int $current)
     {
         $this->render_data['current'] = $current;

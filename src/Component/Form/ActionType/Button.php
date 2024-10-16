@@ -53,21 +53,13 @@ class Button extends BaseAction
 
     /**
      * 提交表单
-     * @param $method
-     * @param $url
-     * @param $data
-     * @param $confirm
-     * @param $afterAction
+     * @param string $confirm
      * @return $this
      */
-    public function submit($method, $url, $data = null, $confirm = '', $afterAction = [self::AFTER_ACTION_CLOSE_MODAL, self::AFTER_ACTION_TABLE_RELOAD])
+    public function submit(string $confirm = '')
     {
         $this->render_data['submit'] = [
-            'method' => $method,
-            'url' => $url,
-            'data' => $data,
             'confirm' => $confirm,
-            'afterAction' => $afterAction,
         ];
         return $this;
     }
