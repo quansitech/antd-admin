@@ -64,7 +64,6 @@ class ColumnsContainer extends BaseComponent
 
     public function addColumn(BaseColumn $column)
     {
-        $column->setWidth('md');
         if (method_exists($column, 'afterFormAdd')) {
             $column->afterFormAdd();
         }
