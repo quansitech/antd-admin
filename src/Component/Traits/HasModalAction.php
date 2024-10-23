@@ -2,23 +2,19 @@
 
 namespace AntdAdmin\Component\Traits;
 
-use AntdAdmin\Component\Modal\ModalContent;
+use AntdAdmin\Component\Modal\Modal;
 
 trait HasModalAction
 {
 
     /**
      * @param string $title
-     * @param ModalContent $content
+     * @param Modal $modal
      * @return $this
      */
-    public function modal(string $title, ModalContent $content, string $width = '60%')
+    public function modal(Modal $modal)
     {
-        $this->render_data['modal'] = [
-            'title' => $title,
-            'content' => $content->render(),
-            'width' => $width,
-        ];
+        $this->render_data['modal'] = $modal;
         return $this;
     }
 }

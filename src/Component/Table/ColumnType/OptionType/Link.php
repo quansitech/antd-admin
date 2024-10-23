@@ -27,4 +27,10 @@ class Link extends BaseOption
     {
         return 'link';
     }
+
+    public function modalByField($field)
+    {
+        $this->render_data['modalByField'] = $field;
+        return $this;
+    }
 }

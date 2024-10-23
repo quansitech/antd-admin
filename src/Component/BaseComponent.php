@@ -9,6 +9,17 @@ abstract class BaseComponent implements Renderable
 {
     protected $render_data = [];
 
+    private function _recursiveSerialize($value)
+    {
+        if (is_array($value)) {
+            return array_map([$this, '_recursiveSerialize'], $value);
+        } elseif (is_object($value) && method_exists($value, 'toArray')) {
+            return $value->toArray();
+        } else {
+            return $value;
+        }
+    }
+
     public function render()
     {
         $this->checkConflictPropAttributes();
@@ -23,7 +34,7 @@ abstract class BaseComponent implements Renderable
 
     public function toArray()
     {
-        return $this->render_data;
+        return $this->_recursiveSerialize($this->render_data);
     }
 
     protected function getConflictPropAttributes(): array

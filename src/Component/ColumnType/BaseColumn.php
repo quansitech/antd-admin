@@ -10,7 +10,7 @@ use AntdAdmin\Component\ColumnType\RuleType\BaseRule;
  * @method self setFormItemProps($props) 设置表单项属性
  * @method self setSearch($search) 设置搜索选项，表格列无效
  * @method self setWidth($width) 设置列宽 表单宽度请使用setFormItemWidth
- * @method self setFixed($fixed) 设置列固定 left right
+ * @method self setFixed(string $fixed) 设置列固定 left right
  * @method self setFieldProps($props) 设置搜索/表单项组件的属性
  */
 abstract class BaseColumn extends BaseComponent
