@@ -71,7 +71,7 @@ $table->columns(function (Table\ColumnsContainer $container) {
     $container->text('id', 'ID')->setSearch(false);
     $container->text('name', '名称');
     $container->dateTime('created_at', '创建时间');
-    $container->option('', '操作')->options(function (Table\ColumnType\OptionsContainer $container){
+    $container->action('', '操作')->actions(function (Table\ColumnType\ActionsContainer $container){
         $container->link('编辑')->setHref(U('edit', ['id'=>'__id__']));
     });
 });

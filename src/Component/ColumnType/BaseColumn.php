@@ -4,6 +4,8 @@ namespace AntdAdmin\Component\ColumnType;
 
 use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\ColumnType\RuleType\BaseRule;
+use AntdAdmin\Component\Form;
+use AntdAdmin\Component\Table;
 
 /**
  *
@@ -15,7 +17,11 @@ use AntdAdmin\Component\ColumnType\RuleType\BaseRule;
  */
 abstract class BaseColumn extends BaseComponent
 {
+    protected Form|null $form = null;
+    protected Table|null $table = null;
+
     abstract protected function getValueType(): string;
+
 
     public function afterFormAdd()
     {
@@ -99,6 +105,16 @@ abstract class BaseColumn extends BaseComponent
     {
         $this->render_data['formItemProps']['extra'] = $tips;
         return $this;
+    }
+
+    public function setForm(Form $form): void
+    {
+        $this->form = $form;
+    }
+
+    public function setTable(Table $table)
+    {
+        $this->table = $table;
     }
 
 }

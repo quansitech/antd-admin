@@ -11,6 +11,7 @@ use AntdAdmin\Component\Traits\HasContainer;
 
 /**
  * @method $this setSearch(boolean $search) 设置是否显示搜索框
+ * @method $this setExtraRenderValues(array $values) 设置额外渲染值
  */
 class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 {
@@ -21,10 +22,14 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 
     public function __construct()
     {
-        $this->render_data['columns'] = new ColumnsContainer();
+        $columnsContainer = new ColumnsContainer();
+        $columnsContainer->setTable($this);
+
+        $this->render_data['columns'] = $columnsContainer;
         $this->render_data['actions'] = new ActionsContainer();
         $this->render_data['rowKey'] = 'id';
         $this->render_data['searchUrl'] = U('');
+        $this->render_data['extraRenderValues'] = [];
     }
 
 
@@ -135,5 +140,15 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
     {
         $headers = getallheaders();
         return $headers['X-Table-Search'] ?? false;
+    }
+
+    public function getDataSource()
+    {
+        return $this->render_data['dataSource'];
+    }
+
+    public function getExtraRenderValues()
+    {
+        return $this->render_data['extraRenderValues'];
     }
 }

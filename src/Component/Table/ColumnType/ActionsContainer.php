@@ -3,18 +3,18 @@
 namespace AntdAdmin\Component\Table\ColumnType;
 
 use AntdAdmin\Component\BaseComponent;
-use AntdAdmin\Component\Table\ColumnType\OptionType\BaseOption;
-use AntdAdmin\Component\Table\ColumnType\OptionType\Link;
+use AntdAdmin\Component\Table\ColumnType\ActionType\BaseAction;
+use AntdAdmin\Component\Table\ColumnType\ActionType\Link;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 /**
  * @method Link link(string $title)
  */
-class OptionsContainer extends BaseComponent
+class ActionsContainer extends BaseComponent
 {
     use AutoCallAddComponent;
 
-    public function addOption(BaseOption $option)
+    public function addOption(BaseAction $option)
     {
         $this->render_data[] = $option;
         return $option;
@@ -27,6 +27,6 @@ class OptionsContainer extends BaseComponent
 
     protected function getNamespace(): string
     {
-        return 'AntdAdmin\\Component\\Table\ColumnType\\OptionType\\';
+        return 'AntdAdmin\\Component\\Table\ColumnType\\ActionType\\';
     }
 }

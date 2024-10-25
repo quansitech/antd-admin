@@ -20,7 +20,8 @@ use AntdAdmin\Component\ColumnType\Select;
 use AntdAdmin\Component\ColumnType\Text;
 use AntdAdmin\Component\ColumnType\Time;
 use AntdAdmin\Component\ColumnType\TimeRange;
-use AntdAdmin\Component\Table\ColumnType\Option;
+use AntdAdmin\Component\Table;
+use AntdAdmin\Component\Table\ColumnType\Action;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 
@@ -42,17 +43,25 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  * @method TimeRange timeRange(string $dataIndex, string $title)
  * @method Image image(string $dataIndex, string $title)
  *
- * @method Option option(string $dataIndex, string $title)
+ * @method Action action(string $dataIndex, string $title)
  */
 class ColumnsContainer extends BaseComponent
 {
     use AutoCallAddComponent;
 
+    protected Table $table;
+
     public function addColumn(BaseColumn $column)
     {
         $column->editable(false);
+        $column->setTable($this->table);
         $this->render_data[] = $column;
         return $column;
+    }
+
+    public function setTable(Table $table): void
+    {
+        $this->table = $table;
     }
 
     protected function getCallMethod(): string

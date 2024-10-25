@@ -5,21 +5,21 @@ namespace AntdAdmin\Component\Table\ColumnType;
 use AntdAdmin\Component\ColumnType\BaseColumn;
 use AntdAdmin\Component\Traits\HasContainer;
 
-class Option extends BaseColumn
+class Action extends BaseColumn
 {
     use HasContainer;
 
     public function __construct($dataIndex, $title)
     {
         parent::__construct($dataIndex, $title);
-        $this->render_data['options'] = new OptionsContainer();
-        $this->render_data['key'] = 'options';
+        $this->render_data['actions'] = new ActionsContainer();
+        $this->render_data['key'] = 'action';
         $this->setFixed('right');
     }
 
     protected function getValueType(): string
     {
-        return 'option';
+        return 'action';
     }
 
     /**
@@ -29,9 +29,9 @@ class Option extends BaseColumn
      * @throws \ReflectionException
      * @throws \Think\Exception
      */
-    public function options($callback)
+    public function actions($callback)
     {
-        $this->handleContainer('options', $callback);
+        $this->handleContainer('actions', $callback);
         return $this;
     }
 }

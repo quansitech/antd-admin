@@ -67,8 +67,15 @@ class ColumnsContainer extends BaseComponent
         if (method_exists($column, 'afterFormAdd')) {
             $column->afterFormAdd();
         }
+        $column->setForm($this->form);
+
         $this->render_data[] = $column;
         return $column;
+    }
+
+    public function setForm(Form $form): void
+    {
+        $this->form = $form;
     }
 
     protected function getCallMethod(): string

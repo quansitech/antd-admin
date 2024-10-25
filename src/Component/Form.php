@@ -11,6 +11,7 @@ use AntdAdmin\Component\Traits\HasContainer;
 
 /**
  * @method self setReadonly(bool $readonly) 设置是否只读
+ * @method self setExtraRenderValues(array $extraValue) 设置额外渲染的值，用于需要额外值的表单项渲染
  */
 class Form extends BaseComponent implements PaneInterface, ModalPropsInterface
 {
@@ -18,8 +19,15 @@ class Form extends BaseComponent implements PaneInterface, ModalPropsInterface
 
     public function __construct()
     {
-        $this->render_data['columns'] = new ColumnsContainer();
-        $this->render_data['actions'] = new ActionsContainer();
+        $columnsContainer = new ColumnsContainer();
+        $columnsContainer->setForm($this);
+
+        $actionsContainer = new ActionsContainer();
+
+        $this->render_data['columns'] = $columnsContainer;
+        $this->render_data['actions'] = $actionsContainer;
+
+        $this->render_data['extraRenderValues'] = [];
     }
 
     public function columns($callback): static
@@ -42,6 +50,11 @@ class Form extends BaseComponent implements PaneInterface, ModalPropsInterface
     {
         $this->render_data['initialValues'] = $array;
         return $this;
+    }
+
+    public function getInitialValues()
+    {
+        return $this->render_data['initialValues'];
     }
 
     protected function getPageComponent(): string
@@ -75,5 +88,10 @@ class Form extends BaseComponent implements PaneInterface, ModalPropsInterface
             'afterAction' => $afterAction,
         ];
         return $this;
+    }
+
+    public function getExtraRenderValues()
+    {
+        return $this->render_data['extraRenderValues'];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AntdAdmin\Component\Table\ColumnType\OptionType;
+namespace AntdAdmin\Component\Table\ColumnType\ActionType;
 
 use AntdAdmin\Component\Traits\HasModalAction;
 use AntdAdmin\Component\Traits\HasRequestAction;
@@ -8,7 +8,7 @@ use AntdAdmin\Component\Traits\HasRequestAction;
 /**
  * @method $this setDanger($danger) 设置是否为危险按钮
  */
-class Link extends BaseOption
+class Link extends BaseAction
 {
     use HasRequestAction, HasModalAction;
 

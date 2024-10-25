@@ -1,11 +1,11 @@
 <?php
 
-namespace AntdAdmin\Component\Table\ColumnType\OptionType;
+namespace AntdAdmin\Component\Table\ColumnType\ActionType;
 
 use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\Traits\HasShowRules;
 
-abstract class BaseOption extends BaseComponent
+abstract class BaseAction extends BaseComponent
 {
     use HasShowRules;
 
