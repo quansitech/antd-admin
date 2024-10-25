@@ -25,7 +25,7 @@ trait PageComponent
 
         $render_data = parent::render();
         if ($showView) {
-            Inertia::getInstance()->render($this->getPageComponent(), $render_data, T('common/inertia_blank_layout'));
+            Inertia::getInstance()->render($this->getPageComponent(), $render_data);
         }
         return $render_data;
     }

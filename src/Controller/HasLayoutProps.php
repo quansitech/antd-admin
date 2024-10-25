@@ -25,6 +25,8 @@ trait HasLayoutProps
             'menuActiveKey' => 'n-' . getNid(),
             'logo' => showFileUrl(C('CONFIG_WEBSITE_LOGO')),
             'userMenu' => C('ANTD_ADMIN_LAYOUT_PROPS.userMenu'),
+
+            'enableNewLayout' => C('ANTD_ADMIN_NEW_LAYOUT'),
         ]);
     }
 
