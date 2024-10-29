@@ -26,6 +26,7 @@ class Form extends BaseComponent implements PaneInterface, ModalPropsInterface
 
         $this->render_data['columns'] = $columnsContainer;
         $this->render_data['actions'] = $actionsContainer;
+        $this->render_data['type'] = 'form';
 
         $this->render_data['extraRenderValues'] = [];
     }

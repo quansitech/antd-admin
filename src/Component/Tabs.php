@@ -20,6 +20,7 @@ class Tabs extends BaseComponent
 
     public function __construct()
     {
+        $this->render_data['type'] = 'tabs';
         $this->render_data['tabs'] = [];
     }
 

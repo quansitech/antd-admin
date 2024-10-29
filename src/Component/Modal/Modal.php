@@ -11,19 +11,17 @@ use AntdAdmin\Component\BaseComponent;
 class Modal extends BaseComponent
 {
 
-    public function setContent(string $type, ModalPropsInterface $props)
+    public function setContent(ModalPropsInterface $props)
     {
         $this->render_data['content'] = [
-            'type' => $type,
             'props' => $props,
         ];
         return $this;
     }
 
-    public function setUrl(string $type, string $url)
+    public function setUrl(string $url)
     {
         $this->render_data['content'] = [
-            'type' => $type,
             'url' => $url,
         ];
         return $this;
