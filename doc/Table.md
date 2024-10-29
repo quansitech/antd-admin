@@ -55,6 +55,7 @@ $table->actions(function (Table\ActionsContainer $container) {
 * link(string url) 设置按钮链接，url 为链接地址
 * modal(Modal modal) 弹窗
 * relateSelection() 关联选择目标
+* setBadge(string $badge) 设置角标
 
 #### StartEditable
 
@@ -88,10 +89,10 @@ $table->columns(function (Table\ColumnsContainer $container) {
 * setFieldProps(array props) \[编辑模式]
   设置表单项组件属性，如text类型，参考 [ant-design#input](https://ant.design/components/input-cn/#api)
 
-#### Option (操作列)
+#### Action (操作列)
 
 * __construct(string dataIndex, string title) 构造函数，dataIndex 为字段名【空字符串就好】，title 为标题
-* options(Closure $closure) 设置操作项，参考 [Table.Column.Option](#行操作组件)
+* actions(Closure $closure) 设置操作项，参考 [Table.Column.Action](#行操作组件)
 
 其它列类型请查看 [Columns](./Columns.md)
 
@@ -104,3 +105,4 @@ $table->columns(function (Table\ColumnsContainer $container) {
 * modal(Modal modal) 弹窗
 * request(string method, string url, array data=null, array headers=null, string confirm='') 设置请求，method 为请求方法，url
   为请求地址，data 为请求数据，headers 为请求头，confirm 为确认提示
+* setBadge(string $badge) 设置角标，支持 `__字段名__` 形式占位符

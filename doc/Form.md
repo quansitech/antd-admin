@@ -56,3 +56,4 @@ $form->setMetaTitle('新增')
 * submit() 设置为提交操作
 * modal(Modal $modal) 设置为弹窗操作
 * back() 设置为返回操作
+* setBadge(string $badge) 设置角标

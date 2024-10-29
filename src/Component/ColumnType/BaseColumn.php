@@ -22,12 +22,6 @@ abstract class BaseColumn extends BaseComponent
 
     abstract protected function getValueType(): string;
 
-
-    public function afterFormAdd()
-    {
-        $this->setFormItemWidth(8);
-    }
-
     public function __construct($dataIndex, $title)
     {
         $this->render_data = [
@@ -107,13 +101,26 @@ abstract class BaseColumn extends BaseComponent
         return $this;
     }
 
+    protected function beforeAddForm()
+    {
+        $this->setFormItemWidth(8);
+    }
+
     public function setForm(Form $form): void
     {
+        $this->beforeAddForm();
         $this->form = $form;
+    }
+
+    protected function beforeAddTable()
+    {
+        $this->editable(false);
+        $this->setWidth(100);
     }
 
     public function setTable(Table $table)
     {
+        $this->beforeAddTable();
         $this->table = $table;
     }
 

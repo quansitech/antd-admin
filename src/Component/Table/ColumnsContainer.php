@@ -53,7 +53,6 @@ class ColumnsContainer extends BaseComponent
 
     public function addColumn(BaseColumn $column)
     {
-        $column->editable(false);
         $column->setTable($this->table);
         $this->render_data[] = $column;
         return $column;

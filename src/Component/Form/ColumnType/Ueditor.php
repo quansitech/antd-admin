@@ -25,9 +25,9 @@ class Ueditor extends BaseColumn
         return $this;
     }
 
-    public function afterFormAdd()
+    protected function beforeAddForm()
     {
-        parent::afterFormAdd();
+        parent::beforeAddForm();
         $this->setFormItemWidth(18);
     }
 
