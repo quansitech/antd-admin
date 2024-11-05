@@ -61,6 +61,9 @@ class File extends BaseColumn
 
     protected function getExtraRenderValue(mixed $ids)
     {
+        if (!$ids) {
+            return [];
+        }
         $ids = explode(',', $ids);
         $res = [];
         foreach ($ids as $id) {
