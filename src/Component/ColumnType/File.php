@@ -4,6 +4,7 @@ namespace AntdAdmin\Component\ColumnType;
 
 class File extends BaseColumn
 {
+    protected $showFileUrlByIdCallback = null;
 
     public function __construct($dataIndex, $title)
     {
@@ -59,6 +60,21 @@ class File extends BaseColumn
         $this->form->setExtraRenderValues($extraValues);
     }
 
+    /**
+     * 设置获取文件url的回调
+     * @param $callback
+     * @return self
+     */
+    public function setShowFileUrlById($callback)
+    {
+        if (!is_callable($callback)) {
+            throw new \Exception('回调必须为callable');
+        }
+
+        $this->showFileUrlByIdCallback = $callback;
+        return $this;
+    }
+
     protected function getExtraRenderValue(mixed $ids)
     {
         if (!$ids) {
@@ -72,7 +88,9 @@ class File extends BaseColumn
                 'id' => $id,
                 'name' => $ent['title'],
                 'hash_id' => $ent['hash_id'],
-                'url' => showFileUrl($id),
+                'url' => $this->showFileUrlByIdCallback
+                    ? $this->showFileUrlByIdCallback($id)
+                    : showFileUrl($id),
             ];
         }
 
