@@ -10,7 +10,7 @@ trait PageComponent
 {
     public function setMetaTitle($title)
     {
-        Inertia::getInstance()->share('layoutProps.metaTitle', $title);
+        Inertia::share('layoutProps.metaTitle', $title);
         return $this;
     }
 
@@ -25,7 +25,7 @@ trait PageComponent
 
         $render_data = parent::render();
         if ($showView) {
-            Inertia::getInstance()->render($this->getPageComponent(), $render_data);
+            Inertia::render($this->getPageComponent(), $render_data);
         }
         return $render_data;
     }

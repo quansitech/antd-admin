@@ -17,7 +17,7 @@ trait HasLayoutProps
             return;
         }
 
-        Inertia::getInstance()->share('layoutProps', [
+        Inertia::share('layoutProps', [
             'title' => C('WEB_SITE_TITLE'),
             'menuList' => $this->getMenuList(),
             'topMenu' => $this->getTopMenu(),
@@ -41,7 +41,7 @@ trait HasLayoutProps
 
     protected function setActiveNid($nid)
     {
-        Inertia::getInstance()->share('layoutProps.menuActiveKey', 'n-' . $nid);
+        Inertia::share('layoutProps.menuActiveKey', 'n-' . $nid);
     }
 
     private function getMenuList()
