@@ -15,6 +15,7 @@ class Action extends BaseColumn
         $this->render_data['actions'] = new ActionsContainer();
         $this->render_data['key'] = 'action';
         $this->setFixed('right');
+        $this->setSearch(false);
     }
 
     protected function getValueType(): string
