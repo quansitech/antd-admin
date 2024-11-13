@@ -20,13 +20,15 @@ class StartEditable extends BaseAction
     /**
      * @param string $method
      * @param string $url
+     * @param array|null $data
      * @return $this
      */
-    public function saveRequest(string $method, string $url)
+    public function saveRequest(string $method, string $url, array $data = null)
     {
         $this->render_data['saveRequest'] = [
             'method' => $method,
             'url' => $url,
+            'data' => $data,
         ];
         return $this;
     }
