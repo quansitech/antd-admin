@@ -124,4 +124,14 @@ abstract class BaseColumn extends BaseComponent
         $this->table = $table;
     }
 
+    /**
+     * 设置只读，表格列无效
+     * @return $this
+     */
+    public function readonly()
+    {
+        $this->render_data['readonly'] = true;
+        return $this;
+    }
+
 }

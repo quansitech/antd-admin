@@ -42,6 +42,7 @@ $form->setMetaTitle('新增')
   设置表单项属性，参考 [ant-design#form-item](https://ant.design/components/form-cn/#formitem)
 * setFieldProps(array props)
   设置表单项组件属性，如text类型，参考 [ant-design#input](https://ant.design/components/input-cn/#api)
+* readonly() 设置为只读
 
 #### Ueditor
 
