@@ -43,6 +43,18 @@ $form->setMetaTitle('新增')
 * setFieldProps(array props)
   设置表单项组件属性，如text类型，参考 [ant-design#input](https://ant.design/components/input-cn/#api)
 
+#### Ueditor
+
+* __construct(string dataIndex, string title) 构造函数，dataIndex 为字段名，title 为标题
+* setUeditorPath(string path) 设置前端路径，默认为 /ueditor
+* setUeditorConfig(array config) 设置配置，参考 [ueditor](https://github.com/fex-team/ueditor)
+
+#### Dependency
+
+* __construct() 构造函数
+* columns(\Closure $callback) 设置表单项，参考 [Columns](#表单项)
+* setShowCondition(string field, string operator, mixed value) 设置依赖条件
+
 其它列类型请查看 [Columns](./Columns.md)
 
 ### 操作

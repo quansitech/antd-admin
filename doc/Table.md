@@ -3,7 +3,7 @@
 ## 示例
 
 ```php
-use AntdAdmin\Table;
+use AntdAdmin\Component\Table;
 
 $table = new Table();
 $table->setMetaTitle('页面标题')
@@ -106,3 +106,4 @@ $table->columns(function (Table\ColumnsContainer $container) {
 * request(string method, string url, array data=null, array headers=null, string confirm='') 设置请求，method 为请求方法，url
   为请求地址，data 为请求数据，headers 为请求头，confirm 为确认提示
 * setBadge(string $badge) 设置角标，支持 `__字段名__` 形式占位符
+* setShowCondition($field, $operator, $value) 设置显示条件
