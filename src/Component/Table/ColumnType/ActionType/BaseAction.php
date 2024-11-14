@@ -4,11 +4,11 @@ namespace AntdAdmin\Component\Table\ColumnType\ActionType;
 
 use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\Traits\HasBadge;
-use AntdAdmin\Component\Traits\HasShowRules;
+use AntdAdmin\Component\Traits\HasShowCondition;
 
 abstract class BaseAction extends BaseComponent
 {
-    use HasShowRules, HasBadge;
+    use HasShowCondition, HasBadge;
 
     abstract protected function getType();
 

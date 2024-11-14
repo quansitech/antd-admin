@@ -55,6 +55,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  * @method File file(string $dataIndex, string $title)
  * @method Area area(string $dataIndex, string $title)
  * @method Form\ColumnType\Ueditor ueditor(string $dataIndex, string $title)
+ * @method Form\ColumnType\Dependency dependency()
  */
 class ColumnsContainer extends BaseComponent
 {
