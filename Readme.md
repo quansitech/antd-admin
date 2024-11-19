@@ -15,3 +15,25 @@ composer require quansitech/antd-admin
 * [表格组件Table](./doc/Table.md)
 * [表单组件Form](./doc/Form.md)
 * [标签页组件Tabs](./doc/Tabs.md)
+
+## 扩展组件
+
+在包的composer.json中添加如下配置
+
+```json5
+{
+  // 省略其它配置
+  "extra": {
+    "qscmf": {
+      "antd-admin": {
+        "component": {
+          "【container注册位置】": "【目标组件路径】",
+          "Column.Extra": "resourses/js/Component/Extra.tsx"
+        }
+      }
+    }
+  }
+}
+```
+
+其中container注册位置可参考 [前端库文档=自定义组件](https://github.com/quansitech/antd-admin-front?tab=readme-ov-file#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6)
