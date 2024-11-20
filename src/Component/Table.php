@@ -12,6 +12,7 @@ use AntdAdmin\Component\Traits\HasContainer;
 /**
  * @method $this setSearch(boolean $search) 设置是否显示搜索框
  * @method $this setExtraRenderValues(array $values) 设置额外渲染值
+ * @method $this setExpandable(array $expandable) 设置树形展开属性
  */
 class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 {
@@ -86,7 +87,12 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         return $this;
     }
 
-    public function setPagination(Pagination $pagination)
+    /**
+     * 设置分页
+     * @param Pagination|false $pagination
+     * @return $this
+     */
+    public function setPagination(Pagination|false $pagination)
     {
         $this->render_data['pagination'] = $pagination;
         return $this;
@@ -130,9 +136,10 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         if ($this->isSearchRequest()) {
             header('Content-Type: application/json');
             $this->render_data['columns']->render();
+            $pagination = $this->render_data['pagination'];
             qs_exit(json_encode([
                 'dataSource' => $this->render_data['dataSource'],
-                'pagination' => $this->render_data['pagination']?->render(),
+                'pagination' => $pagination ? $pagination->render() : false,
                 'extraRenderValues' => $this->render_data['extraRenderValues'],
             ]));
         }

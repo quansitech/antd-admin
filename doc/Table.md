@@ -29,11 +29,14 @@ $table->setMetaTitle('页面标题')
 * actions(Closure $closure) 设置表格操作栏，参考 [Table.Actions](#表格操作栏)
 * columns(Closure $closure) 设置表格列，参考 [Table.Columns](#表格列)
 * setDataSource(array data) 设置数据源
-* setPagination(Pagination $pagination) 设置分页
+* setPagination(Pagination|false $pagination) 设置分页
 * setRowKey($key) 设置行键，默认为 id
 * setDefaultSearchValue($value) 设置默认搜索值
 * setDateFormatter(string $formatter) 设置日期格式
 * setSearchUrl(string url) 设置搜索地址
+* setSearch(boolean search) 设置是否展示搜索栏
+* setExpandable(array expandable)
+  设置树形展开属性。参考 [Antd.expandable](https://ant.design/components/table-cn#expandable)
 * render() 渲染表格
 
 ### 表格操作栏
