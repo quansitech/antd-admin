@@ -50,11 +50,14 @@ $form->setMetaTitle('新增')
 * setUeditorPath(string path) 设置前端路径，默认为 /ueditor
 * setUeditorConfig(array config) 设置配置，参考 [ueditor](https://github.com/fex-team/ueditor)
 
-#### Dependency
+#### Dependency（依赖项）
+
+可以依赖其它字段，当依赖字段的值改变时，当前表单项会显示或隐藏
 
 * __construct() 构造函数
 * columns(\Closure $callback) 设置表单项，参考 [Columns](#表单项)
-* setShowCondition(string field, string operator, mixed value) 设置依赖条件
+* setShowCondition(string field, string operator, mixed value)
+  设置依赖条件，field 为依赖字段，operator可参考 [Condition](./Condition.md#operator)
 
 其它列类型请查看 [Columns](./Columns.md)
 
