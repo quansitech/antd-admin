@@ -50,6 +50,8 @@ $form->setMetaTitle('新增')
 * setUeditorPath(string path) 设置前端路径，默认为 /ueditor
 * setUeditorConfig(array config) 设置配置，参考 [ueditor](https://github.com/fex-team/ueditor)
 
+object-storage上传配置请参考 [Antd-admin富文本使用](https://github.com/quansitech/qscmf-formitem-object-storage?tab=readme-ov-file#Antd-admin富文本使用)
+
 #### Dependency（依赖项）
 
 可以依赖其它字段，当依赖字段的值改变时，当前表单项会显示或隐藏

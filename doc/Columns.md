@@ -60,8 +60,11 @@
 * setUploadRequest(string $policyGetUrl) 设置上传文件请求地址
 * setMaxCount(int $maxCount) 设置最大上传文件数量
 
+object-storage上传请参考[os](https://github.com/qq958691165/qscmf-formitem-object-storage?tab=readme-ov-file#%E4%BD%BF%E7%94%A8)
+
 #### Image
 
+继承File
 * setUploadRequest(string $policyGetUrl) 设置上传文件请求地址
 * setMaxCount(int $maxCount) 设置最大上传文件数量
 * setCrop(string $ratio) 设置裁剪比例， width/height

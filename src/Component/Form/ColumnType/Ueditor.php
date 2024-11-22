@@ -47,6 +47,17 @@ class Ueditor extends BaseColumn
         return $this;
     }
 
+    /**
+     * 设置额外脚本路径
+     * @param string[] $extraScripts
+     * @return $this
+     */
+    public function setExtraScripts(array $extraScripts)
+    {
+        $this->render_data['fieldProps']['extraScripts'] = $extraScripts;
+        return $this;
+    }
+
     protected function beforeAddForm()
     {
         parent::beforeAddForm();
