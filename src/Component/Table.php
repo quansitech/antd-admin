@@ -13,6 +13,7 @@ use AntdAdmin\Component\Traits\HasContainer;
  * @method $this setSearch(boolean $search) 设置是否显示搜索框
  * @method $this setExtraRenderValues(array $values) 设置额外渲染值
  * @method $this setExpandable(array $expandable) 设置树形展开属性
+ * @method $this setAjaxRequest(boolean $ajaxRequest) 设置是否使用ajax请求
  */
 class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 {
@@ -30,7 +31,7 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         $this->render_data['columns'] = $columnsContainer;
         $this->render_data['actions'] = new ActionsContainer();
         $this->render_data['rowKey'] = 'id';
-        $this->render_data['searchUrl'] = U('');
+        $this->render_data['searchUrl'] = '';
         $this->render_data['extraRenderValues'] = [];
     }
 
