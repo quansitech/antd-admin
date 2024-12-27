@@ -15,10 +15,11 @@ class Image extends File
      * @param string $ratio 宽高比: 'width/height'
      * @return $this
      */
-    public function setCrop(string $ratio)
+    public function setCrop(string $ratio, float $quality = 0.8)
     {
         $this->render_data['fieldProps']['crop'] = [
             'ratio' => $ratio,
+            'quality' => $quality,
         ];
         return $this;
     }
