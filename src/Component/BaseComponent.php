@@ -9,6 +9,19 @@ abstract class BaseComponent implements Renderable
 {
     protected $render_data = [];
 
+    protected function htmlDecode($data)
+    {
+        if (is_array($data)) {
+            foreach ($data as &$v) {
+                $v = $this->htmlDecode($v);
+            }
+            return $data;
+        } elseif (is_string($data)) {
+            return html_entity_decode($data);
+        }
+        return $data;
+    }
+
     private function _recursiveSerialize($value)
     {
         if (is_array($value)) {
@@ -34,7 +47,8 @@ abstract class BaseComponent implements Renderable
 
     public function toArray()
     {
-        return $this->_recursiveSerialize($this->render_data);
+        $data = $this->_recursiveSerialize($this->render_data);
+        return $this->htmlDecode($data);
     }
 
     protected function getConflictPropAttributes(): array
