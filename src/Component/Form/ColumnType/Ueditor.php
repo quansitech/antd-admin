@@ -12,7 +12,11 @@ class Ueditor extends BaseColumn
     {
         parent::__construct($dataIndex, $title);
         $this->ueditorPath = asset('ueditor');
-        $this->render_data['fieldProps'] = [];
+        $this->render_data['fieldProps'] = [
+            'config' => [
+                'serverUrl' => U('/extends/ueditor/index'),
+            ]
+        ];
     }
 
     public function setUeditorPath(string $path)
