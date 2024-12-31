@@ -9,14 +9,6 @@ trait HasLayoutProps
 
     protected function handleLayoutProps()
     {
-        if (IS_AJAX) {
-            return;
-        }
-
-        if ($this->isInertia()) {
-            return;
-        }
-
         Inertia::share('layoutProps', [
             'title' => C('WEB_SITE_TITLE'),
             'menuList' => $this->getMenuList(),
@@ -44,7 +36,7 @@ trait HasLayoutProps
         Inertia::share('layoutProps.menuActiveKey', 'n-' . $nid);
     }
 
-    private function getMenuList()
+    protected function getMenuList()
     {
         $menu = $this->menu_list;
         $res = [];
@@ -59,7 +51,7 @@ trait HasLayoutProps
         return $res;
     }
 
-    private function getTopMenu()
+    protected function getTopMenu()
     {
         $menu = $this->top_menu;
         $res = [];
