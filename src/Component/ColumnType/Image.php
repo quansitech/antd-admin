@@ -13,9 +13,10 @@ class Image extends File
     /**
      * 设置裁剪
      * @param string $ratio 宽高比: 'width/height'
+     * @param float $quality 压缩质量: 0.1 ~ 1
      * @return $this
      */
-    public function setCrop(string $ratio, float $quality = 0.8)
+    public function setCrop(string $ratio, float $quality = 1)
     {
         $this->render_data['fieldProps']['crop'] = [
             'ratio' => $ratio,
