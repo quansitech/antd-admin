@@ -3,6 +3,7 @@
 namespace AntdAdmin;
 
 use AntdAdmin\Controller\AreaController;
+use AntdAdmin\Lib\RegisterHelper;
 use Bootstrap\Provider;
 use Bootstrap\RegisterContainer;
 
@@ -16,6 +17,8 @@ class AntdAdminProvider implements Provider
 
         $config = require_once __DIR__ . '/Conf/config.php';
         C($config);
+
+        RegisterHelper::registerAutoMethod();
     }
 
 }

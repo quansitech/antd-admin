@@ -62,7 +62,7 @@ abstract class BaseComponent implements Renderable
         for ($i = 0; $i < count($conflict_prop_attributes); $i++) {
             for ($j = $i + 1; $j < count($conflict_prop_attributes); $j++) {
                 if (isset($this->render_data[$conflict_prop_attributes[$i]]) && isset($this->render_data[$conflict_prop_attributes[$j]])) {
-                    E(get_class($this) . ' 属性错误：' . $conflict_prop_attributes[$i] . ' 和 ' . $conflict_prop_attributes[$j] . ' 不能同时设置');
+                    throw new \Exception(get_class($this) . ' 属性错误：' . $conflict_prop_attributes[$i] . ' 和 ' . $conflict_prop_attributes[$j] . ' 不能同时设置');
                 }
             }
         }

@@ -14,7 +14,7 @@ class ActionsContainer extends BaseComponent
 {
     use AutoCallAddComponent;
 
-    public function addOption(BaseAction $option)
+    public function addOption(BaseAction $option): BaseAction
     {
         $this->render_data[] = $option;
         return $option;

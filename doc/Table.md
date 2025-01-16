@@ -48,6 +48,13 @@ use AntdAdmin\Component\Table;
 $table->actions(function (Table\ActionsContainer $container) {
     $container->button('添加')->link(U('add'));
     $container->startEditable('编辑')->saveRequest('put', U('save'));
+    
+    // v1.1 增加以下快捷操作
+    $container->addNew(); //添加
+    $container->forbid(); //禁用
+    $container->resume(); //恢复
+    $container->delete(); //删除
+    $container->editSave(); //编辑保存
 });
 ```
 
@@ -77,6 +84,11 @@ $table->columns(function (Table\ColumnsContainer $container) {
     $container->dateTime('created_at', '创建时间');
     $container->action('', '操作')->actions(function (Table\ColumnType\ActionsContainer $container){
         $container->link('编辑')->setHref(U('edit', ['id'=>'__id__']));
+        
+        // v1.1 增加以下快捷操作
+        $container->edit();
+        $container->forbid();
+        $container->delete();
     });
 });
 ```

@@ -8,8 +8,14 @@ trait AutoCallAddComponent
 
     abstract protected function getNamespace(): string|array;
 
+    protected static $_helper_methods = [];
+
     public function __call(string $name, array $arguments)
     {
+        if (isset(self::$_helper_methods[$name])) {
+            return call_user_func_array(self::$_helper_methods[$name], [$this, ...$arguments]);
+        }
+
         $class = $this->resoleClass($name);
         return call_user_func([$this, $this->getCallMethod()], new $class(...$arguments));
     }
@@ -26,6 +32,11 @@ trait AutoCallAddComponent
                 return $class;
             }
         }
-        E('column type: ' . $name . ' error');
+        throw new \Exception('column type: ' . $name . ' error');
+    }
+
+    public static function registerHelperMethod($methodName, $callback)
+    {
+        self::$_helper_methods[$methodName] = $callback;
     }
 }

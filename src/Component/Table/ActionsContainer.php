@@ -6,9 +6,6 @@ use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\Table\ActionType\BaseAction;
 use AntdAdmin\Component\Table\ActionType\Button;
 use AntdAdmin\Component\Table\ActionType\StartEditable;
-use AntdAdmin\Component\Table\ColumnType\BaseColumn;
-use AntdAdmin\Component\Table\ColumnType\Select;
-use AntdAdmin\Component\Table\ColumnType\Text;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 
