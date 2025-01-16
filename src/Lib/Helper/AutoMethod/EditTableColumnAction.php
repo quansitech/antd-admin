@@ -15,8 +15,9 @@ class EditTableColumnAction extends BaseHelper
             switch ($type) {
                 case 'modal':
                     $modal = new Modal();
-                    $modal->setTitle('编辑');
-                    $modal->setUrl(U('edit', ['id' => '__id__']));
+                    $modal->setTitle('编辑')
+                        ->setWidth('800px')
+                        ->setUrl(U('edit', ['id' => '__id__']));
                     $button->modal($modal);
                     break;
                 case 'link':

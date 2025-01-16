@@ -18,8 +18,9 @@ class AddNewTableAction extends BaseHelper
             switch ($type) {
                 case 'modal':
                     $modal = new Modal();
-                    $modal->setTitle('新增');
-                    $modal->setUrl(U('add'));
+                    $modal->setTitle('新增')
+                        ->setWidth('800px')
+                        ->setUrl(U('add'));
                     $button->modal($modal);
                     break;
                 case 'link':
