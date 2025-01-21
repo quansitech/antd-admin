@@ -51,6 +51,7 @@ class Button extends BaseAction
      */
     public function relateSelection()
     {
+        $this->table->setRowSelection(true);
         $this->render_data['relateSelection'] = true;
         return $this;
     }

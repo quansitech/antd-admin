@@ -3,6 +3,7 @@
 namespace AntdAdmin\Component\Table;
 
 use AntdAdmin\Component\BaseComponent;
+use AntdAdmin\Component\Table;
 use AntdAdmin\Component\Table\ActionType\BaseAction;
 use AntdAdmin\Component\Table\ActionType\Button;
 use AntdAdmin\Component\Table\ActionType\StartEditable;
@@ -17,8 +18,17 @@ class ActionsContainer extends BaseComponent
 {
     use AutoCallAddComponent;
 
+    protected Table $table;
+
+    public function setTable(Table $table)
+    {
+        $this->table = $table;
+        return $this;
+    }
+
     public function addAction(BaseAction $action)
     {
+        $action->setTable($this->table);
         $this->render_data[] = $action;
         return $action;
     }

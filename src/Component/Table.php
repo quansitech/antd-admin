@@ -27,9 +27,12 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         $columnsContainer = new ColumnsContainer();
         $columnsContainer->setTable($this);
 
+        $actionsContainer = new ActionsContainer();
+        $actionsContainer->setTable($this);
+
         $this->render_data['type'] = 'table';
         $this->render_data['columns'] = $columnsContainer;
-        $this->render_data['actions'] = new ActionsContainer();
+        $this->render_data['actions'] = $actionsContainer;
         $this->render_data['rowKey'] = 'id';
         $this->render_data['searchUrl'] = '';
         $this->render_data['extraRenderValues'] = [];
