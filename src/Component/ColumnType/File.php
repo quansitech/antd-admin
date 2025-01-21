@@ -4,6 +4,8 @@ namespace AntdAdmin\Component\ColumnType;
 
 class File extends BaseColumn
 {
+    use HasExtraDataRender;
+
     protected $showFileUrlByIdCallback = null;
 
     public function __construct($dataIndex, $title)
@@ -37,27 +39,12 @@ class File extends BaseColumn
 
     public function render()
     {
-        if ($this->form) {
-            $this->handleFormExtraRender();
-        }
-        if ($this->table) {
-            $this->handleTableExtraRender();
-        }
         if (!isset($this->render_data['fieldProps']['uploadRequest'])) {
             $this->render_data['fieldProps']['uploadRequest'] = [
                 'policyGetUrl' => U('api/upload/upload', ['cate' => 'file']),
             ];
         }
         return parent::render();
-    }
-
-    protected function handleFormExtraRender()
-    {
-        $extraValues = $this->form->getExtraRenderValues();
-        $initialValue = $this->form->getInitialValues()[$this->render_data['dataIndex']] ?? '';
-
-        $extraValues[$this->render_data['dataIndex']] = $this->getExtraRenderValue($initialValue);
-        $this->form->setExtraRenderValues($extraValues);
     }
 
     /**
@@ -75,14 +62,14 @@ class File extends BaseColumn
         return $this;
     }
 
-    protected function getExtraRenderValue(mixed $ids)
+    protected function getExtraRenderValue(mixed $value)
     {
-        if (!$ids) {
+        if (!$value) {
             return [];
         }
-        $ids = explode(',', $ids);
+        $value = explode(',', $value);
         $res = [];
-        foreach ($ids as $id) {
+        foreach ($value as $id) {
             $ent = D('FilePic')->where(['id' => $id])->find();
             $res[] = [
                 'id' => $id,
@@ -97,16 +84,4 @@ class File extends BaseColumn
         return $res;
     }
 
-    protected function handleTableExtraRender()
-    {
-        $extraValues = $this->table->getExtraRenderValues();
-        foreach ($this->table->getDataSource() as $i => $item) {
-            if (!isset($extraValues[$i])) {
-                $extraValues[$i] = [];
-            }
-            $extraValues[$i][$this->render_data['dataIndex']] = $this->getExtraRenderValue($item[$this->render_data['dataIndex']]);
-        }
-
-        $this->table->setExtraRenderValues($extraValues);
-    }
 }

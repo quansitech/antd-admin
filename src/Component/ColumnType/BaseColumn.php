@@ -134,4 +134,28 @@ abstract class BaseColumn extends BaseComponent
         return $this;
     }
 
+    public function render()
+    {
+        if (in_array(HasExtraDataRender::class, class_uses($this))) {
+            if ($this->form) {
+                $extraValues = $this->form->getExtraRenderValues();
+                $initialValue = $this->form->getInitialValues()[$this->render_data['dataIndex']] ?? '';
+                $extraValues[$this->render_data['dataIndex']] = $this->getExtraRenderValue($initialValue);
+                $this->form->setExtraRenderValues($extraValues);
+            }
+            if ($this->table) {
+                $extraValues = $this->table->getExtraRenderValues();
+                foreach ($this->table->getDataSource() as $i => $item) {
+                    if (!isset($extraValues[$i])) {
+                        $extraValues[$i] = [];
+                    }
+                    $extraValues[$i][$this->render_data['dataIndex']] = $this->getExtraRenderValue($item[$this->render_data['dataIndex']]);
+                }
+
+                $this->table->setExtraRenderValues($extraValues);
+            }
+        }
+        return parent::render();
+    }
+
 }

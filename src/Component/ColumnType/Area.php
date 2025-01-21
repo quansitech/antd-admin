@@ -4,6 +4,8 @@ namespace AntdAdmin\Component\ColumnType;
 
 class Area extends Cascader
 {
+    use HasExtraDataRender;
+
     protected $maxLevel = null;
 
     public function __construct($dataIndex, $title)
@@ -28,5 +30,36 @@ class Area extends Cascader
             $this->setLoadDataUrl(U('Antd/Area/forCascader', ['maxLevel' => $this->maxLevel]));
         }
         return parent::render();
+    }
+
+    protected function getExtraRenderValue(mixed $value)
+    {
+        if (!$value) {
+            return null;
+        }
+        $options = $this->getParentOptionsToValue($value);
+
+        return [
+            'options' => $options,
+        ];
+    }
+
+
+    // 递归获取某个值的所有父级并以树形结构返回，包括兄弟节点
+    protected function getParentOptionsToValue($value, $children = [], $isLeaf = true)
+    {
+        $area = D('Area')->where(['id' => $value])->find();
+        if ($area['level'] == 0) {
+            return $children;
+        }
+        $map['upid'] = $area['upid'];
+        $rows = D('Area')->where($map)->field('id as value,cname as label')->select();
+        foreach ($rows as &$row) {
+            if ($row['value'] == $value) {
+                $row['children'] = $children;
+            }
+            $row['isLeaf'] = $isLeaf;
+        }
+        return $this->getParentOptionsToValue($area['upid'], $rows, false);
     }
 }

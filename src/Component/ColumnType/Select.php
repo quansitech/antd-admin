@@ -14,7 +14,7 @@ class Select extends BaseColumn
     }
 
     /**
-     * 设置搜索
+     * 设置显示搜索功能
      * @return $this
      */
     public function showSearch(): static

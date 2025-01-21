@@ -22,6 +22,7 @@ namespace AntdAdmin\Component\Table {
 
         /**
          * @return Button
+         * @see \AntdAdmin\Lib\Helper\AutoMethod\ForbidTableAction
          */
         public function forbid()
         {
@@ -29,6 +30,7 @@ namespace AntdAdmin\Component\Table {
 
         /**
          * @return Button
+         * @see \AntdAdmin\Lib\Helper\AutoMethod\ForbidTableAction
          */
         public function resume()
         {
@@ -36,6 +38,7 @@ namespace AntdAdmin\Component\Table {
 
         /**
          * @return StartEditable
+         * @see \AntdAdmin\Lib\Helper\AutoMethod\SaveTableAction
          */
         public function editSave()
         {
@@ -43,6 +46,7 @@ namespace AntdAdmin\Component\Table {
 
         /**
          * @return Button
+         * @see \AntdAdmin\Lib\Helper\AutoMethod\DeleteTableAction
          */
         public function delete()
         {
@@ -58,6 +62,7 @@ namespace AntdAdmin\Component\Table\ColumnType {
     {
         /**
          * @return Link
+         * @see \AntdAdmin\Lib\Helper\AutoMethod\EditTableColumnAction
          */
         public function edit()
         {
@@ -66,6 +71,7 @@ namespace AntdAdmin\Component\Table\ColumnType {
 
         /**
          * @return Link[] [0]为禁用，[1]为启用
+         * @see \AntdAdmin\Lib\Helper\AutoMethod\ForbidTableColumnAction
          */
         public function forbid()
         {
@@ -73,6 +79,7 @@ namespace AntdAdmin\Component\Table\ColumnType {
 
         /**
          * @return Link
+         * @see \AntdAdmin\Lib\Helper\AutoMethod\DeleteTableColumnAction
          */
         public function delete()
         {
