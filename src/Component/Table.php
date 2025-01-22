@@ -60,8 +60,7 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
      * 设置列
      * @param $callback callable
      * @return Table
-     * @throws \ReflectionException
-     * @throws \Think\Exception
+     * @throws \Exception
      */
     public function columns(callable $callback): static
     {
@@ -69,6 +68,12 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         return $this;
     }
 
+    /**
+     * 设置操作
+     * @param $callback
+     * @return $this
+     * @throws \Exception
+     */
     public function actions($callback)
     {
         $this->handleContainer('actions', $callback);
