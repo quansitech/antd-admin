@@ -19,6 +19,7 @@ trait HasLayoutProps
             'userMenu' => C('ANTD_ADMIN_LAYOUT_PROPS.userMenu'),
 
             'enableNewLayout' => C('ANTD_ADMIN_NEW_LAYOUT'),
+            'userName' => getUserName(session(C('USER_AUTH_KEY'))),
         ]);
     }
 
