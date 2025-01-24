@@ -15,7 +15,7 @@ $modal->setTitle('新增')
     ->setWidth('800px')
     // 设置内容
     ->setContent(new Form())
-    // 或
+    // 或设置url
     ->setUrl(U('add'));
 
 /** @var Button|Link|FormButton $button **/
