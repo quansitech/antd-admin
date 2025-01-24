@@ -63,6 +63,8 @@ $table->actions(function (Table\ActionsContainer $container) {
 * __construct(string title) 构造函数, title 为按钮文字
 * setProps(array props) 设置按钮属性，参考 [ant-design#button](https://ant.design/components/button-cn#api)
 * link(string url) 设置按钮链接，url 为链接地址
+* request(string method, string url, array data=null, array headers=null, string confirm='') 设置请求，method 为请求方法,
+  url 为请求地址，data 为请求数据，headers 为请求头，confirm 为确认提示，当关联选择时，data支持 `__字段名__` 形式占位符
 * modal(Modal modal) [弹窗](./Modal.md)
 * relateSelection() 关联选择目标
 * setBadge(string $badge) 设置角标
@@ -116,9 +118,9 @@ $table->columns(function (Table\ColumnsContainer $container) {
 ###### Link
 
 * __construct(string title) 构造函数，title 为按钮文字
-* setHref(string url) 设置链接地址
-* modal(Modal modal) [弹窗](./Modal.md)
+* setHref(string url) 设置链接地址，支持 `__字段名__` 形式占位符
+* modal(Modal modal) [弹窗](./Modal.md)，当使用setUrl时，支持 `__字段名__` 形式占位符
 * request(string method, string url, array data=null, array headers=null, string confirm='') 设置请求，method 为请求方法，url
-  为请求地址，data 为请求数据，headers 为请求头，confirm 为确认提示
+  为请求地址，data 为请求数据，headers 为请求头，confirm 为确认提示，`url`及`data`支持 `__字段名__` 形式占位符
 * setBadge(string $badge) 设置角标，支持 `__字段名__` 形式占位符
 * setShowCondition($field, $operator, $value) 设置显示条件
