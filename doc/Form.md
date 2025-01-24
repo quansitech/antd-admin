@@ -72,6 +72,6 @@ object-storage上传配置请参考 [Antd-admin富文本使用](https://github.c
 * reset() 设置为重置操作
 * request(\$method, \$url, array \$data = null, array \$headers = null, \$confirm = '') 设置请求操作
 * submit() 设置为提交操作
-* modal(Modal $modal) 设置为弹窗操作
+* modal(Modal $modal) 设置为[弹窗操作](./Modal.md)
 * back() 设置为返回操作
 * setBadge(string $badge) 设置角标
