@@ -136,7 +136,7 @@ abstract class BaseColumn extends BaseComponent
 
     public function render()
     {
-        if (in_array(HasExtraDataRender::class, class_uses($this))) {
+        if (in_array(HasExtraDataRender::class, class_uses_recursive($this))) {
             if ($this->form) {
                 $extraValues = $this->form->getExtraRenderValues();
                 $initialValue = $this->form->getInitialValues()[$this->render_data['dataIndex']] ?? '';
