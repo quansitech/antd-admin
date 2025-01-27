@@ -36,6 +36,7 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         $this->render_data['rowKey'] = 'id';
         $this->render_data['searchUrl'] = '';
         $this->render_data['extraRenderValues'] = [];
+        $this->render_data['pagination'] = false;
     }
 
 
