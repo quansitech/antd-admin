@@ -10,6 +10,10 @@ use AntdAdmin\Component\BaseComponent;
  */
 class Modal extends BaseComponent
 {
+    public function __construct()
+    {
+        $this->render_data['width'] = '800px';
+    }
 
     public function setContent(ModalPropsInterface $props)
     {
@@ -29,6 +33,10 @@ class Modal extends BaseComponent
 
     public function render()
     {
+        if (!$this->render_data['content']) {
+            throw new \Exception('Modal 组件必须设置 content 属性');
+        }
+
         /** @var ModalPropsInterface $props */
         $props = $this->render_data['content']['props'] ?? null;
         if ($props) {
