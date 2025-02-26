@@ -5,6 +5,7 @@ namespace AntdAdmin\Component\Form;
 use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\Form\ActionType\BaseAction;
 use AntdAdmin\Component\Form\ActionType\Button;
+use AntdAdmin\Component\Traits\RelateAuthNodeForContainer;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 /**
@@ -12,7 +13,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  */
 class ActionsContainer extends BaseComponent
 {
-    use AutoCallAddComponent;
+    use AutoCallAddComponent, RelateAuthNodeForContainer;
 
     public function addAction(BaseAction $action): BaseAction
     {

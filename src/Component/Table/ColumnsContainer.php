@@ -22,6 +22,7 @@ use AntdAdmin\Component\ColumnType\Time;
 use AntdAdmin\Component\ColumnType\TimeRange;
 use AntdAdmin\Component\Table;
 use AntdAdmin\Component\Table\ColumnType\Action;
+use AntdAdmin\Component\Traits\RelateAuthNodeForContainer;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 
@@ -47,7 +48,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  */
 class ColumnsContainer extends BaseComponent
 {
-    use AutoCallAddComponent;
+    use AutoCallAddComponent, RelateAuthNodeForContainer;
 
     protected Table $table;
 

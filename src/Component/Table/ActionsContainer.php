@@ -7,6 +7,7 @@ use AntdAdmin\Component\Table;
 use AntdAdmin\Component\Table\ActionType\BaseAction;
 use AntdAdmin\Component\Table\ActionType\Button;
 use AntdAdmin\Component\Table\ActionType\StartEditable;
+use AntdAdmin\Component\Traits\RelateAuthNodeForContainer;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 
@@ -16,7 +17,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  */
 class ActionsContainer extends BaseComponent
 {
-    use AutoCallAddComponent;
+    use AutoCallAddComponent, RelateAuthNodeForContainer;
 
     protected Table $table;
 

@@ -4,11 +4,12 @@ namespace AntdAdmin\Component\Table\ActionType;
 
 use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\Table;
+use AntdAdmin\Component\Traits\HasAuthNode;
 use AntdAdmin\Component\Traits\HasBadge;
 
 abstract class BaseAction extends BaseComponent
 {
-    use HasBadge;
+    use HasBadge, HasAuthNode;
 
     protected Table $table;
 

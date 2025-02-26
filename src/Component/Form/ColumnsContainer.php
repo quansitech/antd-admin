@@ -28,6 +28,7 @@ use AntdAdmin\Component\ColumnType\Textarea;
 use AntdAdmin\Component\ColumnType\Time;
 use AntdAdmin\Component\ColumnType\TimeRange;
 use AntdAdmin\Component\Form;
+use AntdAdmin\Component\Traits\RelateAuthNodeForContainer;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 /**
@@ -59,7 +60,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  */
 class ColumnsContainer extends BaseComponent
 {
-    use AutoCallAddComponent;
+    use AutoCallAddComponent, RelateAuthNodeForContainer;
 
     protected Form $form;
 

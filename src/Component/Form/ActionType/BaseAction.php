@@ -3,11 +3,12 @@
 namespace AntdAdmin\Component\Form\ActionType;
 
 use AntdAdmin\Component\BaseComponent;
+use AntdAdmin\Component\Traits\HasAuthNode;
 use AntdAdmin\Component\Traits\HasBadge;
 
 abstract class BaseAction extends BaseComponent
 {
-    use HasBadge;
+    use HasBadge, HasAuthNode;
 
     public function __construct(string $title)
     {

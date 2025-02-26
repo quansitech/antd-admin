@@ -5,6 +5,7 @@ namespace AntdAdmin\Component\Table\ColumnType;
 use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\Table\ColumnType\ActionType\BaseAction;
 use AntdAdmin\Component\Table\ColumnType\ActionType\Link;
+use AntdAdmin\Component\Traits\RelateAuthNodeForContainer;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
 /**
@@ -12,7 +13,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  */
 class ActionsContainer extends BaseComponent
 {
-    use AutoCallAddComponent;
+    use AutoCallAddComponent, RelateAuthNodeForContainer;
 
     public function addOption(BaseAction $option): BaseAction
     {

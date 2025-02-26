@@ -6,6 +6,7 @@ use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\ColumnType\RuleType\BaseRule;
 use AntdAdmin\Component\Form;
 use AntdAdmin\Component\Table;
+use AntdAdmin\Component\Traits\HasAuthNode;
 
 /**
  *
@@ -17,6 +18,8 @@ use AntdAdmin\Component\Table;
  */
 abstract class BaseColumn extends BaseComponent
 {
+    use HasAuthNode;
+
     protected Form|null $form = null;
     protected Table|null $table = null;
 
