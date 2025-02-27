@@ -68,12 +68,14 @@ $table->actions(function (Table\ActionsContainer $container) {
 * modal(Modal modal) [弹窗](./Modal.md)
 * relateSelection() 关联选择目标
 * setBadge(string $badge) 设置角标
+* setAuthNode(string $authNode) 设置权限节点
 
 #### StartEditable
 
 * __construct(string title) 构造函数, title 为按钮文字
 * setProps(array props) 设置按钮属性，参考 [ant-design#button](https://ant.design/components/button-cn#api)
 * saveRequest(string method, string url) 设置保存请求，method 为请求方法，url 为请求地址
+* setAuthNode(string $authNode) 设置权限节点
 
 ### 表格列
 
@@ -105,6 +107,7 @@ $table->columns(function (Table\ColumnsContainer $container) {
   设置表单项属性，参考 [ant-design#form-item](https://ant.design/components/form-cn/#formitem)
 * setFieldProps(array props) \[编辑模式]
   设置表单项组件属性，如text类型，参考 [ant-design#input](https://ant.design/components/input-cn/#api)
+* setAuthNode(string $authNode) 设置权限节点
 
 #### Action (操作列)
 
@@ -124,3 +127,4 @@ $table->columns(function (Table\ColumnsContainer $container) {
   为请求地址，data 为请求数据，headers 为请求头，confirm 为确认提示，`url`及`data`支持 `__字段名__` 形式占位符
 * setBadge(string $badge) 设置角标，支持 `__字段名__` 形式占位符
 * setShowCondition($field, $operator, $value) 设置显示条件
+* setAuthNode(string $authNode) 设置权限节点

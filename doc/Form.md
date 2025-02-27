@@ -43,6 +43,7 @@ $form->setMetaTitle('新增')
 * setFieldProps(array props)
   设置表单项组件属性，如text类型，参考 [ant-design#input](https://ant.design/components/input-cn/#api)
 * readonly() 设置为只读
+* setAuthNode(string $authNode) 设置权限节点
 
 #### Ueditor
 
@@ -69,6 +70,7 @@ object-storage上传配置请参考 [Antd-admin富文本使用](https://github.c
 
 * __construct(string $title) 构造函数
 * setProps(array $props) 设置按钮属性，参考 [ant-design#button](https://ant.design/components/button-cn/#API)
+* setAuthNode(string $authNode) 设置权限节点
 * reset() 设置为重置操作
 * request(\$method, \$url, array \$data = null, array \$headers = null, \$confirm = '') 设置请求操作
 * submit() 设置为提交操作
