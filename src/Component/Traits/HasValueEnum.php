@@ -27,9 +27,6 @@ trait HasValueEnum
     {
         if (empty($valueEnum)) return [];
         $res = [];
-        if ($valueEnum == array_values($valueEnum)) {
-            return $valueEnum;
-        }
 
         foreach ($valueEnum as $key => $item) {
             $res[] = [$key, $item];
