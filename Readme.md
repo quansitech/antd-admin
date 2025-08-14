@@ -50,6 +50,20 @@ npm run build:backend
     npm run dev:backend
     ```
 
+   #### 使用ssh开发时需要在 `vite.backend.config.js` 中 `server` 块修改为如下配置
+
+   ```
+   server: {
+      port: 5183, // 资源编译服务端口
+      cors: true, // 允许跨域
+      host: '0.0.0.0', // 允许所有ip访问
+      hmr: { // 热重载配置
+          host: 'localhost', // hmr服务地址
+          protocol: 'ws', // hmr协议
+      },
+   },
+   ```
+
 3. controller中返回inertia响应
 
     ```php
