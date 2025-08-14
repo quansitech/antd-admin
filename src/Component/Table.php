@@ -143,23 +143,7 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 
     public function render($showView = true)
     {
-        if ($this->isSearchRequest()) {
-            header('Content-Type: application/json');
-            $this->render_data['columns']->render();
-            $pagination = $this->render_data['pagination'];
-            qs_exit(json_encode([
-                'dataSource' => $this->render_data['dataSource'],
-                'pagination' => $pagination ? $pagination->render() : false,
-                'extraRenderValues' => $this->render_data['extraRenderValues'],
-            ]));
-        }
         return $this->pageRender($showView);
-    }
-
-    protected function isSearchRequest()
-    {
-        $headers = getallheaders();
-        return $headers['X-Table-Search'] ?? false;
     }
 
     public function getDataSource()
