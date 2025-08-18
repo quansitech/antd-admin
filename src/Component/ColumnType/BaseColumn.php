@@ -113,6 +113,7 @@ abstract class BaseColumn extends BaseComponent
     {
         $this->beforeAddForm();
         $this->form = $form;
+        $this->afterAddForm();
     }
 
     protected function beforeAddTable()
@@ -125,6 +126,7 @@ abstract class BaseColumn extends BaseComponent
     {
         $this->beforeAddTable();
         $this->table = $table;
+        $this->afterAddTable();
     }
 
     /**
@@ -159,6 +161,14 @@ abstract class BaseColumn extends BaseComponent
             }
         }
         return parent::render();
+    }
+
+    protected function afterAddForm()
+    {
+    }
+
+    protected function afterAddTable()
+    {
     }
 
 }

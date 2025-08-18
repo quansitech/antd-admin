@@ -25,6 +25,7 @@
 * [Textarea](#Textarea) 多行文本
 * [Time](#Time) 时间
 * [TimeRange](#TimeRange) 时间范围
+* [FormList](#FormList) 表单列表
 
 ### Api
 
@@ -96,3 +97,17 @@ object-storage上传请参考[os](https://github.com/quansitech/qscmf-formitem-o
 #### Time
 
 #### TimeRange
+
+#### FormList
+
+* columns(\Closure $callback) 添加表单项
+
+> 示例：
+> ```php
+> $form->columns(function (Form\ColumnsContainer $container){
+>     $container->formList('person', '人员')
+>         ->columns(function (Form\FormListContainer $container){
+>           $container->text('name', '名称');
+>           $container->text('phone', '手机号');
+>         });
+> });
