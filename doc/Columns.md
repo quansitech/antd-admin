@@ -106,7 +106,7 @@ object-storage上传请参考[os](https://github.com/quansitech/qscmf-formitem-o
 > ```php
 > $form->columns(function (Form\ColumnsContainer $container){
 >     $container->formList('person', '人员')
->         ->columns(function (Form\FormListContainer $container){
+>         ->columns(function (Form\ColumnsContainer $container){
 >           $container->text('name', '名称');
 >           $container->text('phone', '手机号');
 >         });
