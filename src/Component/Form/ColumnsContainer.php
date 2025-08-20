@@ -28,6 +28,7 @@ use AntdAdmin\Component\ColumnType\Textarea;
 use AntdAdmin\Component\ColumnType\Time;
 use AntdAdmin\Component\ColumnType\TimeRange;
 use AntdAdmin\Component\Form;
+use AntdAdmin\Component\Form\ColumnType\FormList;
 use AntdAdmin\Component\Traits\RelateAuthNodeForContainer;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
@@ -64,10 +65,19 @@ class ColumnsContainer extends BaseComponent
     use AutoCallAddComponent, RelateAuthNodeForContainer;
 
     protected Form $form;
+    protected FormList|null $formList = null;
+
+    public function setFormList(FormList $formList): void
+    {
+        $this->formList = $formList;
+    }
 
     public function addColumn(BaseColumn $column)
     {
         $column->setForm($this->form);
+        if ($this->formList) {
+            $column->setFormList($this->formList);
+        }
 
         $this->render_data[] = $column;
         return $column;

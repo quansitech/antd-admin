@@ -5,6 +5,7 @@ namespace AntdAdmin\Component\ColumnType;
 use AntdAdmin\Component\BaseComponent;
 use AntdAdmin\Component\ColumnType\RuleType\BaseRule;
 use AntdAdmin\Component\Form;
+use AntdAdmin\Component\Form\ColumnType\FormList;
 use AntdAdmin\Component\Table;
 use AntdAdmin\Component\Traits\HasAuthNode;
 
@@ -22,8 +23,14 @@ abstract class BaseColumn extends BaseComponent
 
     protected Form|null $form = null;
     protected Table|null $table = null;
+    protected FormList|null $formList = null;
 
     abstract protected function getValueType(): string;
+
+    public function setFormList(FormList $formList): void
+    {
+        $this->formList = $formList;
+    }
 
     public function __construct($dataIndex, $title)
     {
@@ -143,21 +150,32 @@ abstract class BaseColumn extends BaseComponent
     {
         if (in_array(HasExtraDataRender::class, class_uses_recursive($this))) {
             if ($this->form) {
-                $extraValues = $this->form->getExtraRenderValues();
                 $initialValue = $this->form->getInitialValues()[$this->render_data['dataIndex']] ?? '';
-                $extraValues[$this->render_data['dataIndex']] = $this->getExtraRenderValue($initialValue);
-                $this->form->setExtraRenderValues($extraValues);
+                $this->render_data['fieldProps']['extraRenderValue'] = $this->getExtraRenderValue($initialValue);
             }
             if ($this->table) {
-                $extraValues = $this->table->getExtraRenderValues();
+                $extraValues = [];
                 foreach ($this->table->getDataSource() as $i => $item) {
-                    if (!isset($extraValues[$i])) {
-                        $extraValues[$i] = [];
-                    }
-                    $extraValues[$i][$this->render_data['dataIndex']] = $this->getExtraRenderValue($item[$this->render_data['dataIndex']]);
+                    $extraValues[$i] = $this->getExtraRenderValue($item[$this->render_data['dataIndex']]);
                 }
-
-                $this->table->setExtraRenderValues($extraValues);
+                $this->render_data['fieldProps']['extraRenderValue'] = $extraValues;
+            }
+            if ($this->formList){
+                $initialValue = $this->formList->getInitialValues() ?? [];
+                if (is_string($initialValue)) {
+                    $initialValue = json_decode($initialValue, true);
+                }
+                $extraValues = [];
+                foreach ($initialValue as $i => $item) {
+                    if (!isset($item[$this->render_data['dataIndex']])) {
+                        continue;
+                    }
+                    if (!$item[$this->render_data['dataIndex']]) {
+                        continue;
+                    }
+                    $extraValues[$i] = $this->getExtraRenderValue($item[$this->render_data['dataIndex']] ?? '');
+                }
+                $this->render_data['fieldProps']['extraRenderValues'] = $extraValues;
             }
         }
         return parent::render();

@@ -42,6 +42,7 @@ class FormList extends BaseColumn
 
         $columnsContainer = new ColumnsContainer();
         $columnsContainer->setForm($this->form);
+        $columnsContainer->setFormList($this);
         $this->render_data['columns'] = $columnsContainer;
     }
 
@@ -55,6 +56,12 @@ class FormList extends BaseColumn
     {
         $this->handleContainer('columns', $callback);
         return $this;
+    }
+
+    public function getInitialValues(): array
+    {
+        $formValues = $this->form->getInitialValues();
+        return $formValues[$this->render_data['dataIndex']] ?? [];
     }
 
     public function render()
