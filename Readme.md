@@ -102,3 +102,59 @@ npm run build:backend
 ```
 
 其中container注册位置可参考 [前端库文档=自定义组件](https://github.com/quansitech/antd-admin-front?tab=readme-ov-file#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6)
+
+### 自定义Columns示例
+
+#### 增加后端组件 `Extra.class.php`
+
+```php
+use AntdAdmin\Component\ColumnType\BaseColumn;
+
+class Extra extends BaseColumn {
+  protected function getValueType(): string
+    {
+        return 'extra'; //与前端组件名对应
+    }
+}
+```
+
+#### 增加前端组件 `Extra.tsx`
+
+```tsx
+import {ColumnProps} from "@quansitech/antd-admin/dist/components/Column/types";
+import {useState, useEffect} from 'react';
+
+export default function (props: ColumnProps){
+  const [value, setValue] = useState(props.fieldProps.value); // 初始值
+
+  const onInput = (e: any) => {
+    const v = e.target.value;
+    
+    setValue(v);
+    props.fieldProps.onChange?.(v); // 设置value，Form回传
+  }
+
+  return <>
+    <input value={value} onChange={onInput} />
+  </>
+}
+
+```
+
+#### 前端注册组件 `resources/js/backend/app.tsx`
+
+```tsx
+import {container} from "@quansitech/antd-admin";
+
+container.register('Column.Extra', ()=>import('./Extra'));
+```
+
+#### 添加入Form表单中
+
+```php
+
+$form->columns(function(Form\ColumnsContainer $container){
+  $container->addColumn(new Extra('data_extra', '额外组件'));
+});
+
+```
