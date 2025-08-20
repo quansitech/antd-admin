@@ -58,7 +58,7 @@ class FormList extends BaseColumn
         return $this;
     }
 
-    public function getInitialValues(): array
+    public function getInitialValues(): array|string
     {
         $formValues = $this->form->getInitialValues();
         return $formValues[$this->render_data['dataIndex']] ?? [];
@@ -71,6 +71,9 @@ class FormList extends BaseColumn
         $initValues = $formValues[$this->render_data['dataIndex']] ?? [];
         if (empty($initValues)) {
             $initValues = [(object)[]];
+        }
+        if (is_string($initValues)){
+            $initValues = json_decode($initValues, true);
         }
         $formValues[$this->render_data['dataIndex']] = $initValues;
         $this->form->setInitialValues($formValues);

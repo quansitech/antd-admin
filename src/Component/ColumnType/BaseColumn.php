@@ -167,6 +167,7 @@ abstract class BaseColumn extends BaseComponent
                 }
                 $extraValues = [];
                 foreach ($initialValue as $i => $item) {
+                    $item = (array)$item;
                     if (!isset($item[$this->render_data['dataIndex']])) {
                         continue;
                     }
