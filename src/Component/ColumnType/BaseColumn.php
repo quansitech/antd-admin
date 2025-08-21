@@ -158,7 +158,7 @@ abstract class BaseColumn extends BaseComponent
                 foreach ($this->table->getDataSource() as $i => $item) {
                     $extraValues[$i] = $this->getExtraRenderValue($item[$this->render_data['dataIndex']]);
                 }
-                $this->render_data['fieldProps']['extraRenderValue'] = $extraValues;
+                $this->render_data['fieldProps']['extraRenderValues'] = $extraValues;
             }
             if ($this->formList){
                 $initialValue = $this->formList->getInitialValues() ?? [];
