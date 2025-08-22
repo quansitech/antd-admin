@@ -134,6 +134,15 @@ export default function (props: ColumnProps){
     props.fieldProps.onChange?.(v); // 设置value，Form回传
   }
 
+  useEffect(()=>{
+    props.fieldProps.withValidator(async (v: any)=>{ // 如需要自定义验证，则注入验证方法，参数为表单项的值
+      if (v === '1'){
+        throw new Error('出错了'); // 模拟不合规时抛出异常，异常错误信息会显示在该表单项下方
+      }
+      return true;
+    })
+  },[]);
+
   return <>
     <input value={value} onChange={onInput} />
   </>

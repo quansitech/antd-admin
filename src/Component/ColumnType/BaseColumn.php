@@ -41,6 +41,9 @@ abstract class BaseColumn extends BaseComponent
             'formItemProps' => [
                 'rules' => []
             ],
+            'fieldProps' => [
+
+            ],
         ];
     }
 
@@ -148,6 +151,10 @@ abstract class BaseColumn extends BaseComponent
 
     public function render()
     {
+        if (!$this->render_data['fieldProps']){
+            $this->render_data['fieldProps'] = (object)[];
+        }
+
         if (in_array(HasExtraDataRender::class, class_uses_recursive($this))) {
             if ($this->form) {
                 $initialValue = $this->form->getInitialValues()[$this->render_data['dataIndex']] ?? '';
