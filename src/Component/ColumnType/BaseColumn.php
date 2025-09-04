@@ -116,7 +116,7 @@ abstract class BaseColumn extends BaseComponent
 
     protected function beforeAddForm()
     {
-        $this->setFormItemWidth(8);
+        $this->setFormItemWidth(12);
     }
 
     public function setForm(Form $form): void

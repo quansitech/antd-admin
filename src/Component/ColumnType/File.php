@@ -62,6 +62,12 @@ class File extends BaseColumn
         return $this;
     }
 
+    protected function beforeAddTable(){
+        parent::beforeAddTable();
+
+        $this->setSearch(false);
+    }
+
     protected function getExtraRenderValue(mixed $value)
     {
         if (!$value) {
