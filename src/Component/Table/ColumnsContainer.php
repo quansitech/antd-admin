@@ -40,6 +40,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  * @method RadioButton radioButton(string $dataIndex, string $title)
  * @method Select select(string $dataIndex, string $title)
  * @method Text text(string $dataIndex, string $title)
+ * @method Textarea textarea(string $dataIndex, string $title)
  * @method Time time(string $dataIndex, string $title)
  * @method TimeRange timeRange(string $dataIndex, string $title)
  * @method Image image(string $dataIndex, string $title)
