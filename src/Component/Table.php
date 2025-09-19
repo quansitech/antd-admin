@@ -14,6 +14,7 @@ use AntdAdmin\Component\Traits\HasContainer;
  * @method $this setExtraRenderValues(array $values) 设置额外渲染值
  * @method $this setExpandable(array $expandable) 设置树形展开属性
  * @method $this setAjaxRequest(boolean $ajaxRequest) 设置是否使用ajax请求
+ * @method $this setDescription(string $html) 设置描述
  */
 class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
 {
