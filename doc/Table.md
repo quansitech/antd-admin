@@ -109,6 +109,11 @@ $table->columns(function (Table\ColumnsContainer $container) {
   设置表单项组件属性，如text类型，参考 [ant-design#input](https://ant.design/components/input-cn/#api)
 * setAuthNode(string $authNode) 设置权限节点
 
+
+#### SelectText (下拉+文本搜索列)
+* __construct(string dataIndex, string title) 构造函数，dataIndex 为字段名【以“:”分隔字段，如 `key:value`】，title 为标题
+* setValueEnum(Map valueEnum) 设置选项Map
+
 #### Action (操作列)
 
 * __construct(string dataIndex, string title) 构造函数，dataIndex 为字段名【空字符串就好】，title 为标题
