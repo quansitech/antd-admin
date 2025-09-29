@@ -22,6 +22,7 @@ use AntdAdmin\Component\ColumnType\Time;
 use AntdAdmin\Component\ColumnType\TimeRange;
 use AntdAdmin\Component\Table;
 use AntdAdmin\Component\Table\ColumnType\Action;
+use AntdAdmin\Component\Table\ColumnType\SelectText;
 use AntdAdmin\Component\Traits\RelateAuthNodeForContainer;
 use AntdAdmin\Lib\AutoCallAddComponent;
 
@@ -46,6 +47,7 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  * @method Image image(string $dataIndex, string $title)
  *
  * @method Action action(string $dataIndex, string $title)
+ * @method SelectText selectText(string $dataIndex, string $title)
  */
 class ColumnsContainer extends BaseComponent
 {
