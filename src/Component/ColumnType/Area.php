@@ -46,7 +46,7 @@ class Area extends Cascader
 
 
     // 递归获取某个值的所有父级并以树形结构返回，包括兄弟节点
-    protected function getParentOptionsToValue($value, $children = [])
+    public function getParentOptionsToValue($value, $children = [])
     {
         $area = D('Area')->where(['id' => $value])->find();
         if ($area['level'] == 0) {

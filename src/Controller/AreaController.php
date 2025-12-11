@@ -3,6 +3,7 @@
 namespace AntdAdmin\Controller;
 
 
+use AntdAdmin\Component\ColumnType\Area;
 use Think\Controller;
 
 class AreaController extends Controller
@@ -11,6 +12,11 @@ class AreaController extends Controller
     {
         $maxLevel = I('maxLevel', 3);
         $selected = I('selected');
+        $value = I('value');
+        if ($value){
+            $this->handleValue($value);
+            return;
+        }
 
         // 获取所有子节点
         $field = 'id as value,cname as label,level';
@@ -25,5 +31,13 @@ class AreaController extends Controller
             $row['isLeaf'] = $row['level'] >= $maxLevel || !$hasChildren;
         }
         $this->ajaxReturn($rows);
+    }
+
+    protected function handleValue($value)
+    {
+        $area = new Area('area', 'area');
+        $opitons = $area->getParentOptionsToValue($value);
+
+        $this->ajaxReturn($opitons);
     }
 }
