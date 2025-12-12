@@ -3,7 +3,9 @@
 namespace AntdAdmin\Component\Table;
 
 use AntdAdmin\Component\BaseComponent;
+use AntdAdmin\Component\ColumnType\Area;
 use AntdAdmin\Component\ColumnType\BaseColumn;
+use AntdAdmin\Component\ColumnType\Cascader;
 use AntdAdmin\Component\ColumnType\Checkbox;
 use AntdAdmin\Component\ColumnType\Date;
 use AntdAdmin\Component\ColumnType\DateMonth;
@@ -28,6 +30,8 @@ use AntdAdmin\Lib\AutoCallAddComponent;
 
 
 /**
+ * @method Area area(string $dataIndex, string $title)
+ * @method Cascader cascader(string $dataIndex, string $title)
  * @method Checkbox checkbox(string $dataIndex, string $title)
  * @method Date date(string $dataIndex, string $title)
  * @method DateMonth dateMonth(string $dataIndex, string $title)
