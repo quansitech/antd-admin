@@ -7,7 +7,7 @@ use AntdAdmin\Component\Form;
 use AntdAdmin\Component\Tabs;
 
 $tab2 = new Form();
-$tabs->columns(function (Form\ColumnsContainer $container){
+$tab2->columns(function (Form\ColumnsContainer $container){
         $container->text('name', '名称');
     })
     ->setSubmitRequest('post', U(''))
