@@ -37,6 +37,7 @@ $table->setMetaTitle('页面标题')
 * setSearch(boolean search) 设置是否展示搜索栏
 * setExpandable(array expandable)
   设置树形展开属性。参考 [Antd.expandable](https://ant.design/components/table-cn#expandable)
+* defaultEditMode() 默认进入编辑模式
 * render() 渲染表格
 
 ### 表格操作栏
@@ -69,6 +70,7 @@ $table->actions(function (Table\ActionsContainer $container) {
 * relateSelection() 关联选择目标
 * setBadge(string $badge) 设置角标
 * setAuthNode(string $authNode) 设置权限节点
+* saveRequest(string method, string url, array data=null) 添加保存请求（结合Table中的defaultEditMode方法使用），method 为请求方法，url 为请求地址，data 为请求数据
 
 #### StartEditable
 

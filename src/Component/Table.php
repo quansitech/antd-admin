@@ -40,6 +40,13 @@ class Table extends BaseComponent implements PaneInterface, ModalPropsInterface
         $this->render_data['pagination'] = false;
     }
 
+    /**
+     * 默认为编辑模式
+     */
+    public function defaultEditMode(){
+        $this->render_data['defaultEditMode'] = true;
+        return $this;
+    }
 
     /**
      * 设置搜索地址

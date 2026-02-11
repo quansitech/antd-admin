@@ -4,7 +4,7 @@ namespace AntdAdmin\Lib\Helper\AutoMethod;
 
 use AntdAdmin\Component\Table\ActionsContainer;
 
-class SaveTableAction extends BaseHelper
+class EditSaveTableAction extends BaseHelper
 {
     public function handle()
     {

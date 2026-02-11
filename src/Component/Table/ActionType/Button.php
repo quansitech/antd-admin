@@ -62,4 +62,19 @@ class Button extends BaseAction
         }
         return parent::render();
     }
+
+    /**
+     * 保存请求，结合 Table::defaultEditMode() 使用
+     * @param string $method
+     * @param string $url
+     * @return $this
+     */
+    public function saveRequest($method, $url, $data = null){
+        $this->render_data['saveRequest'] = [
+            'method' => $method,
+            'url' => $url,
+            'data' => $data,
+        ];
+        return $this;
+    }
 }
