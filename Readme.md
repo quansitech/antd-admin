@@ -158,6 +158,8 @@ import {container} from "@quansitech/antd-admin";
 container.register('Column.Extra', ()=>import('./Extra'));
 ```
 
+详情请参考 [antd-admin-front](https://github.com/quansitech/antd-admin-front)
+
 #### 添加入Form表单中
 
 ```php
