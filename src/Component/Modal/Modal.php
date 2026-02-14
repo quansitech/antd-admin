@@ -31,6 +31,17 @@ class Modal extends BaseComponent
         return $this;
     }
 
+    public function setRequest($method, $url, $data = null){
+        $this->render_data['content'] = [
+            'request' => [
+                'method' => $method,
+                'url' => $url,
+                'data' => $data,
+            ]
+        ];
+        return $this;
+    }
+
     public function render()
     {
         if (!$this->render_data['content']) {
