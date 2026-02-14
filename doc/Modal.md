@@ -16,7 +16,9 @@ $modal->setTitle('新增')
     // 设置内容
     ->setContent(new Form())
     // 或设置url
-    ->setUrl(U('add'));
+    ->setUrl(U('add'))
+    // 或设置请求
+    ->setRequest('post',U('modal'),['id'=>1]);
 
 /** @var Button|Link|FormButton $button **/
 $button->modal($modal);
