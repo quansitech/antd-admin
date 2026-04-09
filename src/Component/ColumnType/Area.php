@@ -2,6 +2,8 @@
 
 namespace AntdAdmin\Component\ColumnType;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class Area extends Cascader
 {
     use HasExtraDataRender;
@@ -45,22 +47,27 @@ class Area extends Cascader
     }
 
 
-    // 递归获取某个值的所有父级并以树形结构返回，包括兄弟节点
     public function getParentOptionsToValue($value, $children = [])
     {
-        $area = D('Area')->where(['id' => $value])->find();
-        if ($area['level'] == 0) {
+        $area = DB::table('area')->where('id', $value)->first();
+        if (!$area || $area->level == 0) {
             return $children;
         }
-        $map['upid'] = $area['upid'];
-        $rows = D('Area')->where($map)->field('id as value,cname as label')->select();
-        foreach ($rows as &$row) {
-            if ($row['value'] == $value) {
-                $row['children'] = $children;
+        $map['upid'] = $area->upid;
+        $rows = DB::table('area')->where($map)->selectRaw('id as value,cname as label,level')->get();
+
+        $childCounts = DB::table('area')
+            ->selectRaw('upid, count(*) as cnt')
+            ->whereIn('upid', $rows->pluck('value')->all())
+            ->groupBy('upid')
+            ->pluck('cnt', 'upid');
+
+        foreach ($rows as $row) {
+            if ($row->value == $value) {
+                $row->children = $children;
             }
-            $hasChildren = D('Area')->where(['upid' => $row['value']])->count();
-            $row['isLeaf'] = ($this->maxLevel ?: 3) <= $row['level'] || !$hasChildren;
+            $row->isLeaf = ($this->maxLevel ?: 3) <= $row->level || empty($childCounts[$row->value]);
         }
-        return $this->getParentOptionsToValue($area['upid'], $rows);
+        return $this->getParentOptionsToValue($area->upid, $rows->all());
     }
 }

@@ -2,6 +2,8 @@
 
 namespace AntdAdmin\Component\ColumnType;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class File extends BaseColumn
 {
     use HasExtraDataRender;
@@ -73,14 +75,19 @@ class File extends BaseColumn
         if (!$value) {
             return [];
         }
-        $value = explode(',', $value);
+        $ids = explode(',', $value);
+        $entities = DB::table('file_pic')->whereIn('id', $ids)->get()->keyBy('id');
+
         $res = [];
-        foreach ($value as $id) {
-            $ent = D('FilePic')->where(['id' => $id])->find();
+        foreach ($ids as $id) {
+            $ent = $entities[$id] ?? null;
+            if (!$ent) {
+                continue;
+            }
             $res[] = [
                 'id' => $id,
-                'name' => $ent['title'],
-                'hash_id' => $ent['hash_id'],
+                'name' => $ent->title,
+                'hash_id' => $ent->hash_id,
                 'url' => $this->showFileUrlByIdCallback
                     ? $this->showFileUrlByIdCallback($id)
                     : showFileUrl($id),

@@ -2,8 +2,8 @@
 
 namespace AntdAdmin\Controller;
 
-
 use AntdAdmin\Component\ColumnType\Area;
+use Illuminate\Database\Capsule\Manager as DB;
 use Think\Controller;
 
 class AreaController extends Controller
@@ -25,19 +25,25 @@ class AreaController extends Controller
         } else {
             $map['upid'] = $selected;
         }
-        $rows = D('Area')->where($map)->field($field)->select();
-        foreach ($rows as &$row) {
-            $hasChildren = D('Area')->where(['upid' => $row['value']])->count();
-            $row['isLeaf'] = $row['level'] >= $maxLevel || !$hasChildren;
+        $rows = DB::table('area')->where($map)->selectRaw($field)->get();
+
+        $childCounts = DB::table('area')
+            ->selectRaw('upid, count(*) as cnt')
+            ->whereIn('upid', $rows->pluck('value')->all())
+            ->groupBy('upid')
+            ->pluck('cnt', 'upid');
+
+        foreach ($rows as $row) {
+            $row->isLeaf = $row->level >= $maxLevel || empty($childCounts[$row->value]);
         }
-        $this->ajaxReturn($rows);
+        $this->ajaxReturn($rows->all());
     }
 
     protected function handleValue($value)
     {
         $area = new Area('area', 'area');
-        $opitons = $area->getParentOptionsToValue($value);
+        $options = $area->getParentOptionsToValue($value);
 
-        $this->ajaxReturn($opitons);
+        $this->ajaxReturn($options);
     }
 }
