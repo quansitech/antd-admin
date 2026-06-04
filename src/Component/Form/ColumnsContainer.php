@@ -56,7 +56,6 @@ use AntdAdmin\Lib\AutoCallAddComponent;
  * @method SwitchType switchType(string $dataIndex, string $title)
  * @method File file(string $dataIndex, string $title)
  * @method Area area(string $dataIndex, string $title)
- * @method Form\ColumnType\Ueditor ueditor(string $dataIndex, string $title)
  * @method Form\ColumnType\FormList formList(string $dataIndex, string $title)
  * @method Form\ColumnType\Dependency dependency()
  */
