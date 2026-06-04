@@ -101,6 +101,32 @@ npm run build:backend
 }
 ```
 
+在 antd-admin 容器中注册:
+
+```php 
+
+use AntdAdmin\Component\Form\ColumnsContainer;
+
+class ExtraProvider implements Provider{
+
+    public function register(){
+
+        // 注册 AntdAdmin Extra 列类型
+        ColumnsContainer::registerType('extra', ExtraColumn::class);
+
+        ...
+    }
+
+    ...
+}
+
+// 然后就可以使用
+
+/** @var $container AntdAdmin\Component\Form\ColumnsContainer */
+$container->extra('extra', '额外表单项');
+
+```
+
 其中container注册位置可参考 [前端库文档=自定义组件](https://github.com/quansitech/antd-admin-front?tab=readme-ov-file#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6)
 
 ### 自定义Columns示例
